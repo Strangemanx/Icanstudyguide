@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ICAN Skills – Public Sector Accounting & Finance</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --ink: #0f1117;
+    --paper: #f6f4f0;
+    --cream: #eae6dc;
+    --navy: #1a2f5c;
+    --navy-light: #d8e2f5;
+    --gold: #b07a10;
+    --gold-light: #f5e4a8;
+    --green: #145c30;
+    --green-light: #d2edde;
+    --red: #a01e1e;
+    --red-light: #fde8e8;
+    --mid: #666;
+    --border: #d8d2c4;
+    --radius: 10px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.75; font-size: 16px; }
+
+  header {
+    background: linear-gradient(135deg, #1a2f5c 0%, #0d1a36 100%);
+    color: #fff; padding: 44px 24px 36px; text-align: center; position: relative; overflow: hidden;
+  }
+  header::after { content:''; position:absolute; bottom:-1px; left:0; right:0; height:30px; background:var(--paper); clip-path:ellipse(55% 100% at 50% 100%); }
+  .eyebrow { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--gold-light); font-weight:600; margin-bottom:10px; }
+  header h1 { font-family:'DM Serif Display',serif; font-size:clamp(26px,5vw,44px); color:#fff; line-height:1.15; margin-bottom:10px; }
+  header p { color:rgba(255,255,255,0.7); font-size:15px; max-width:540px; margin:0 auto; }
+  .badge { display:inline-block; background:var(--gold); color:#fff; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:4px 14px; border-radius:20px; margin-top:14px; }
+
+  nav { background:#0d1a36; padding:0 16px; display:flex; gap:0; overflow-x:auto; scrollbar-width:none; position:sticky; top:0; z-index:100; }
+  nav::-webkit-scrollbar { display:none; }
+  .nav-item { flex-shrink:0; color:rgba(255,255,255,0.55); font-size:12.5px; font-weight:500; padding:13px 14px; cursor:pointer; border-bottom:2px solid transparent; transition:all 0.2s; white-space:nowrap; }
+  .nav-item:hover { color:#fff; }
+  .nav-item.active { color:var(--gold-light); border-bottom-color:var(--gold); }
+
+  .progress-bar-wrap { background:var(--cream); border-bottom:1px solid var(--border); padding:10px 24px; display:flex; align-items:center; gap:14px; font-size:13px; color:var(--mid); }
+  .progress-track { flex:1; height:6px; background:var(--border); border-radius:99px; overflow:hidden; }
+  .progress-fill { height:100%; background:linear-gradient(90deg,var(--navy),var(--gold)); border-radius:99px; transition:width 0.5s ease; }
+
+  .container { max-width:820px; margin:0 auto; padding:40px 24px 80px; }
+  .topic-section { display:none; }
+  .topic-section.active { display:block; animation:fadeIn 0.3s ease; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+  .section-label { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+  .section-title { font-family:'DM Serif Display',serif; font-size:clamp(22px,4vw,32px); color:var(--navy); line-height:1.2; margin-bottom:6px; }
+  .section-desc { color:var(--mid); font-size:14px; margin-bottom:32px; border-left:3px solid var(--navy); padding-left:14px; }
+
+  .teach-block { margin-bottom:36px; }
+  .teach-block h3 { font-family:'DM Serif Display',serif; font-size:20px; color:var(--navy); margin-bottom:10px; display:flex; align-items:center; gap:10px; }
+  .teach-block h3 .num { background:var(--navy); color:#fff; width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Inter',sans-serif; font-size:12px; font-weight:700; flex-shrink:0; }
+  .teach-block p { margin-bottom:12px; color:#2a2a2a; }
+  .teach-block ul,.teach-block ol { padding-left:22px; margin-bottom:12px; color:#2a2a2a; }
+  .teach-block li { margin-bottom:6px; }
+
+  .formula { background:var(--navy); color:#fff; border-radius:var(--radius); padding:16px 20px; font-family:'JetBrains Mono',monospace; font-size:13px; margin:16px 0; line-height:1.9; white-space:pre-wrap; }
+  .formula .label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold-light); font-family:'Inter',sans-serif; font-weight:600; margin-bottom:6px; }
+
+  .key-box { background:var(--navy-light); border-left:4px solid var(--navy); border-radius:0 var(--radius) var(--radius) 0; padding:14px 18px; margin:16px 0; font-size:14.5px; }
+  .key-box strong { color:var(--navy); }
+  .warn-box { background:#fff8e1; border-left:4px solid var(--gold); border-radius:0 var(--radius) var(--radius) 0; padding:14px 18px; margin:16px 0; font-size:14px; }
+  .warn-box strong { color:var(--gold); }
+  .exam-box { background:#f0f3fa; border:1.5px solid var(--navy); border-radius:var(--radius); padding:14px 18px; margin:16px 0; font-size:14px; }
+  .exam-box .exam-tag { font-size:10px; letter-spacing:2px; text-transform:uppercase; font-weight:700; color:var(--navy); }
+
+  .styled-table { width:100%; border-collapse:collapse; font-size:13.5px; margin:16px 0; border-radius:var(--radius); overflow:hidden; }
+  .styled-table th { background:var(--navy); color:#fff; text-align:left; padding:10px 14px; font-weight:600; }
+  .styled-table td { padding:10px 14px; border-bottom:1px solid var(--border); }
+  .styled-table tr:nth-child(even) td { background:var(--cream); }
+
+  .divider { border:none; border-top:1px solid var(--border); margin:32px 0; }
+
+  .quiz-zone { background:var(--cream); border:1px solid var(--border); border-radius:14px; padding:24px; margin:32px 0; }
+  .quiz-header { display:flex; align-items:center; gap:10px; margin-bottom:20px; }
+  .quiz-badge { background:var(--navy); color:#fff; font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:3px 10px; border-radius:20px; }
+  .quiz-header h4 { font-size:14px; font-weight:600; color:var(--mid); }
+
+  .question-block { background:#fff; border-radius:var(--radius); padding:20px; margin-bottom:16px; border:1px solid var(--border); }
+  .question-block.answered { border-color:transparent; }
+  .q-text { font-size:15px; font-weight:600; color:var(--ink); margin-bottom:6px; line-height:1.5; }
+  .q-source { font-size:11px; color:var(--mid); margin-bottom:14px; font-style:italic; }
+  .options { display:flex; flex-direction:column; gap:8px; }
+  .option { display:flex; align-items:flex-start; gap:10px; padding:10px 14px; border:1.5px solid var(--border); border-radius:8px; cursor:pointer; font-size:14px; transition:all 0.15s; background:var(--paper); user-select:none; }
+  .option:hover:not(.locked) { border-color:var(--navy); background:var(--navy-light); }
+  .opt-letter { width:22px; height:22px; border-radius:50%; border:1.5px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0; margin-top:1px; }
+  .option.correct { background:var(--green-light); border-color:var(--green); }
+  .option.correct .opt-letter { background:var(--green); border-color:var(--green); color:#fff; }
+  .option.wrong { background:var(--red-light); border-color:var(--red); }
+  .option.wrong .opt-letter { background:var(--red); border-color:var(--red); color:#fff; }
+  .option.locked { cursor:default; }
+  .option.reveal-correct { background:var(--green-light); border-color:var(--green); }
+  .option.reveal-correct .opt-letter { background:var(--green); border-color:var(--green); color:#fff; }
+
+  .explanation { display:none; margin-top:14px; border-left:3px solid var(--green); border-radius:0 8px 8px 0; padding:12px 16px; font-size:14px; color:#1a4028; line-height:1.6; background:#fff; }
+  .explanation.show { display:block; animation:fadeIn 0.25s ease; }
+  .explanation.wrong-exp { border-left-color:var(--gold); color:#5a3800; background:#fff8e1; }
+
+  .quiz-score { display:none; text-align:center; padding:16px; border-radius:var(--radius); font-size:15px; font-weight:600; margin-top:8px; }
+  .quiz-score.show { display:block; }
+  .quiz-score.great { background:var(--green-light); color:var(--green); }
+  .quiz-score.ok { background:var(--gold-light); color:#7a5500; }
+  .quiz-score.low { background:var(--red-light); color:var(--red); }
+
+  .nav-buttons { display:flex; gap:12px; justify-content:space-between; margin-top:48px; flex-wrap:wrap; }
+  .btn { padding:12px 28px; border-radius:8px; font-size:15px; font-weight:600; cursor:pointer; border:none; transition:all 0.15s; font-family:'Inter',sans-serif; }
+  .btn-primary { background:var(--navy); color:#fff; }
+  .btn-primary:hover { background:#0d1a36; }
+  .btn-secondary { background:var(--cream); color:var(--ink); border:1.5px solid var(--border); }
+  .btn-secondary:hover { background:var(--border); }
+  .btn:disabled { opacity:0.4; cursor:not-allowed; }
+
+  .complete-banner { display:none; text-align:center; padding:48px 24px; }
+  .complete-banner.show { display:block; animation:fadeIn 0.4s ease; }
+  .complete-banner h2 { font-family:'DM Serif Display',serif; font-size:36px; color:var(--navy); margin-bottom:12px; }
+  .complete-banner p { color:var(--mid); margin-bottom:24px; }
+  .trophy { font-size:64px; margin-bottom:16px; }
+
+  ::-webkit-scrollbar { width:6px; }
+  ::-webkit-scrollbar-thumb { background:var(--border); border-radius:99px; }
+  .home-btn {
+    display:inline-flex; align-items:center; gap:6px;
+    background:rgba(255,255,255,0.15); color:rgba(255,255,255,0.9);
+    border:1px solid rgba(255,255,255,0.3); border-radius:8px;
+    font-size:13px; font-weight:600; padding:7px 16px;
+    text-decoration:none; margin-bottom:20px;
+    transition:background 0.15s;
+    position:relative; z-index:1;
+  }
+  .home-btn:hover { background:rgba(255,255,255,0.25); }
+  .home-btn-bottom {
+    display:inline-block; margin-top:16px;
+    background:#fff; border:2px solid currentColor;
+    border-radius:8px; font-size:14px; font-weight:700;
+    padding:10px 24px; text-decoration:none;
+    transition:opacity 0.15s;
+  }
+  .home-btn-bottom:hover { opacity:0.8; }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="ICAN_Skills_Home.html" class="home-btn">← Back to Study Hub</a>
+  <div class="eyebrow">ICAN Skills Level · B6</div>
+  <h1>Public Sector Accounting &amp; Finance</h1>
+  <p>Teaching built from the ICAN PSAF syllabus and actual November 2025 &amp; May 2025 past questions and solutions.</p>
+  <div class="badge">Interactive Study Guide</div>
+</header>
+
+<nav id="mainNav">
+  <div class="nav-item active" onclick="goTo(0)">1. IPSAS Framework</div>
+  <div class="nav-item" onclick="goTo(1)">2. Government Budgeting</div>
+  <div class="nav-item" onclick="goTo(2)">3. Revenue & Expenditure</div>
+  <div class="nav-item" onclick="goTo(3)">4. Consolidated Fund</div>
+  <div class="nav-item" onclick="goTo(4)">5. Public Accounts</div>
+  <div class="nav-item" onclick="goTo(5)">6. Financial Statements</div>
+  <div class="nav-item" onclick="goTo(6)">7. Public Procurement</div>
+  <div class="nav-item" onclick="goTo(7)">8. Internal Control & Audit</div>
+  <div class="nav-item" onclick="goTo(8)">9. Fiscal Responsibility</div>
+  <div class="nav-item" onclick="goTo(9)">10. Public Debt Management</div>
+</nav>
+
+<div class="progress-bar-wrap">
+  <span id="progressLabel">Topic 1 of 10</span>
+  <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:10%"></div></div>
+  <span id="progressPct">10%</span>
+</div>
+
+<div class="container">
+
+<!-- ══ TOPIC 1: IPSAS Framework ══ -->
+<section class="topic-section active" id="topic-0">
+  <div class="section-label">Topic 01</div>
+  <h2 class="section-title">IPSAS — International Public Sector Accounting Standards</h2>
+  <p class="section-desc">IPSAS provides the conceptual and technical framework for government financial reporting. Understanding the differences from IFRS is essential.</p>
+
+  <div class="teach-block">
+    <h3><span class="num">1</span> What is IPSAS?</h3>
+    <p>IPSAS are accounting standards developed by the <strong>International Public Sector Accounting Standards Board (IPSASB)</strong> — a body of the International Federation of Accountants (IFAC). They are designed for use by <strong>national, state, and local governments</strong> and other public sector entities around the world.</p>
+    <p>Nigeria adopted IPSAS through the <strong>Financial Reporting Council (FRC) Act 2011</strong>, which mandated all public sector entities at federal and state levels to prepare financial statements in accordance with IPSAS.</p>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">2</span> Two Bases of IPSAS</h3>
+    <table class="styled-table">
+      <tr><th>Basis</th><th>When Revenue/Expenditure Recognised</th><th>Used For</th></tr>
+      <tr><td><strong>Cash Basis IPSAS</strong></td><td>When cash is received or paid (no accruals)</td><td>Transitional governments; less developed public sector environments</td></tr>
+      <tr><td><strong>Accrual Basis IPSAS</strong></td><td>When transactions occur, regardless of cash flow</td><td>Fully developed public financial management systems; Nigeria's target</td></tr>
+    </table>
+    <div class="key-box"><strong>Nigeria's trajectory:</strong> Federal Government migrated to accrual-basis IPSAS from 2016. State governments are at varying stages. The accrual basis gives a more complete picture of a government's assets, liabilities and obligations.</div>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">3</span> Key Differences: IPSAS vs IFRS</h3>
+    <table class="styled-table">
+      <tr><th>Feature</th><th>IPSAS (Public Sector)</th><th>IFRS (Private Sector)</th></tr>
+      <tr><td>Primary objective</td><td>Accountability and stewardship of public resources</td><td>Decision-useful information for investors</td></tr>
+      <tr><td>Revenue recognition</td><td>Non-exchange revenue (taxes, grants, fines) treated differently — IPSAS 23</td><td>IFRS 15 based on contract/performance obligations</td></tr>
+      <tr><td>Measurement</td><td>Historical cost common; fair value allowed</td><td>Extensive fair value measurement</td></tr>
+      <tr><td>Reporting entity</td><td>Whole-of-government consolidated statements</td><td>Legal entity or group</td></tr>
+      <tr><td>Budget reporting</td><td>Budget vs actual comparison required (IPSAS 24)</td><td>No requirement to present budgets</td></tr>
+    </table>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">4</span> Non-Exchange Revenue (IPSAS 23)</h3>
+    <p>Non-exchange transactions are those where a government receives value without directly giving approximately equal value in return (e.g. taxes, grants, fines, donations).</p>
+    <div class="formula">
+      <div class="label">IPSAS 23 — Non-Exchange Revenue Recognition</div>
+An asset (cash, receivable) is recognised when:
+  (i) it is probable that future economic benefits will flow to the entity
+  (ii) the fair value can be reliably measured
+
+Revenue is recognised when there is no condition attached
+  → recognise immediately on receipt/right to receive
+
+If a condition IS attached (e.g. must spend on a specified purpose):
+  → recognise as a liability first
+  → transfer to revenue only as the condition is satisfied
+    </div>
+  </div>
+
+  <hr class="divider"/>
+  <div class="quiz-zone" id="quiz-0">
+    <div class="quiz-header"><span class="quiz-badge">Checkpoint Quiz</span><h4>IPSAS Framework</h4></div>
+
+    <div class="question-block" id="q-0-0">
+      <div class="q-text">The primary objective of public sector financial reporting under IPSAS differs from IFRS because it focuses on:</div>
+      <div class="q-source">ICAN PSAF — IPSAS vs IFRS</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-0-0','exp-0-0')"><span class="opt-letter">A</span>Maximising return on equity for government shareholders</div>
+        <div class="option" onclick="answer(this,'correct','q-0-0','exp-0-0')"><span class="opt-letter">B</span>Accountability and stewardship of public resources to citizens and oversight bodies</div>
+        <div class="option" onclick="answer(this,'wrong','q-0-0','exp-0-0')"><span class="opt-letter">C</span>Providing information for investment decisions by private capital markets</div>
+        <div class="option" onclick="answer(this,'wrong','q-0-0','exp-0-0')"><span class="opt-letter">D</span>Calculating shareholder earnings per share</div>
+      </div>
+      <div class="explanation" id="exp-0-0"></div>
+    </div>
+
+    <div class="question-block" id="q-0-1">
+      <div class="q-text">Under IPSAS 23 (Non-Exchange Revenue), a government receives a conditional grant of ₦500m, which must be spent on road construction. How should this initially be recognised?</div>
+      <div class="q-source">ICAN PSAF — IPSAS 23 Conditional Grant</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-0-1','exp-0-1')"><span class="opt-letter">A</span>Recognised immediately as revenue of ₦500m</div>
+        <div class="option" onclick="answer(this,'correct','q-0-1','exp-0-1')"><span class="opt-letter">B</span>Recognised as a liability first; transferred to revenue as the condition (road construction) is satisfied</div>
+        <div class="option" onclick="answer(this,'wrong','q-0-1','exp-0-1')"><span class="opt-letter">C</span>Not recognised until the road is fully completed</div>
+        <div class="option" onclick="answer(this,'wrong','q-0-1','exp-0-1')"><span class="opt-letter">D</span>Recognised as a capital reserve</div>
+      </div>
+      <div class="explanation" id="exp-0-1"></div>
+    </div>
+
+    <div class="question-block" id="q-0-2">
+      <div class="q-text">Which of the following is unique to IPSAS but NOT required under IFRS?</div>
+      <div class="q-source">ICAN PSAF — IPSAS 24 (Budget Reporting)</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-0-2','exp-0-2')"><span class="opt-letter">A</span>Disclosure of accounting policies</div>
+        <div class="option" onclick="answer(this,'correct','q-0-2','exp-0-2')"><span class="opt-letter">B</span>A budget versus actual comparison in the financial statements (IPSAS 24)</div>
+        <div class="option" onclick="answer(this,'wrong','q-0-2','exp-0-2')"><span class="opt-letter">C</span>Preparation of a statement of financial position</div>
+        <div class="option" onclick="answer(this,'wrong','q-0-2','exp-0-2')"><span class="opt-letter">D</span>Recognition of property, plant and equipment</div>
+      </div>
+      <div class="explanation" id="exp-0-2"></div>
+    </div>
+
+    <div class="quiz-score" id="score-0"></div>
+  </div>
+  <div class="nav-buttons">
+    <button class="btn btn-secondary" disabled>← Previous</button>
+    <button class="btn btn-primary" onclick="goTo(1)">Next Topic →</button>
+  </div>
+</section>
+
+<!-- ══ TOPIC 2: Government Budgeting ══ -->
+<section class="topic-section" id="topic-1">
+  <div class="section-label">Topic 02</div>
+  <h2 class="section-title">Government Budgeting — Types, Process & Control</h2>
+  <p class="section-desc">The budget is the government's most powerful planning and control tool. Different budgeting techniques have specific strengths and weaknesses — all examinable.</p>
+
+  <div class="teach-block">
+    <h3><span class="num">1</span> Types of Government Budgets</h3>
+    <table class="styled-table">
+      <tr><th>Type</th><th>Key Feature</th><th>Advantage</th><th>Limitation</th></tr>
+      <tr><td><strong>Incremental</strong></td><td>Previous year's budget + % increase</td><td>Simple, quick</td><td>Preserves inefficiencies; never questions base spending</td></tr>
+      <tr><td><strong>Zero-Based (ZBB)</strong></td><td>Every item justified from scratch each year</td><td>Eliminates waste; forces priority review</td><td>Time-consuming; expensive to implement</td></tr>
+      <tr><td><strong>Programme/Performance</strong></td><td>Organised by government programmes and outcomes</td><td>Links spending to results; improves accountability</td><td>Difficult to set measurable output targets</td></tr>
+      <tr><td><strong>Medium-Term Expenditure Framework (MTEF)</strong></td><td>3-year rolling budget aligned to policy</td><td>Improved fiscal discipline; long-term planning</td><td>Forecasting uncertainty; political pressure</td></tr>
+    </table>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">2</span> The Budget Cycle in Nigeria</h3>
+    <ol>
+      <li><strong>Budget Call Circular:</strong> Ministry of Finance/Budget Office issues guidelines and ceilings to MDAs</li>
+      <li><strong>MDA Submissions:</strong> Ministries, Departments, and Agencies prepare and submit their estimates</li>
+      <li><strong>Budget Office Coordination:</strong> Consolidates submissions; aligns with macro-fiscal framework</li>
+      <li><strong>Executive Budget:</strong> President/Governor presents the Appropriation Bill to the Legislature</li>
+      <li><strong>Legislative Approval:</strong> National Assembly/State House reviews, amends, and passes the Appropriation Act</li>
+      <li><strong>Implementation:</strong> Warrant releases by Ministry of Finance; expenditure by MDAs</li>
+      <li><strong>Monitoring & Evaluation:</strong> Budget Office tracks performance; audit by Auditor-General</li>
+    </ol>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">3</span> Medium-Term Expenditure Framework (MTEF)</h3>
+    <p>The MTEF is a three-year rolling fiscal framework required under the <strong>Fiscal Responsibility Act 2007</strong>. It consists of:</p>
+    <ul>
+      <li><strong>Macro-Fiscal Framework:</strong> GDP growth, inflation, oil price benchmark, revenue projections</li>
+      <li><strong>Medium-Term Sector Strategies (MTSS):</strong> Sector-level spending plans aligned to national priorities</li>
+      <li><strong>Medium-Term Budget Framework (MTBF):</strong> Aggregate spending ceilings by MDA over 3 years</li>
+    </ul>
+    <div class="key-box"><strong>Nigeria's MTEF requirement:</strong> Section 11 of the Fiscal Responsibility Act 2007 mandates the FGN to prepare a 3-year MTEF and forward it to the National Assembly not later than the second Monday in April each year.</div>
+  </div>
+
+  <hr class="divider"/>
+  <div class="quiz-zone" id="quiz-1">
+    <div class="quiz-header"><span class="quiz-badge">Checkpoint Quiz</span><h4>Government Budgeting</h4></div>
+
+    <div class="question-block" id="q-1-0">
+      <div class="q-text">Zero-Based Budgeting (ZBB) differs from incremental budgeting in that it:</div>
+      <div class="q-source">ICAN PSAF — Budgeting Techniques</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-1-0','exp-1-0')"><span class="opt-letter">A</span>Adds a fixed percentage to the prior year's budget</div>
+        <div class="option" onclick="answer(this,'correct','q-1-0','exp-1-0')"><span class="opt-letter">B</span>Requires every expenditure item to be justified from scratch each budget cycle</div>
+        <div class="option" onclick="answer(this,'wrong','q-1-0','exp-1-0')"><span class="opt-letter">C</span>Only covers capital expenditure, not recurrent</div>
+        <div class="option" onclick="answer(this,'wrong','q-1-0','exp-1-0')"><span class="opt-letter">D</span>Is based on a three-year rolling framework</div>
+      </div>
+      <div class="explanation" id="exp-1-0"></div>
+    </div>
+
+    <div class="question-block" id="q-1-1">
+      <div class="q-text">Under the Fiscal Responsibility Act 2007, the Federal Government of Nigeria must present the Medium-Term Expenditure Framework (MTEF) to the National Assembly no later than:</div>
+      <div class="q-source">ICAN PSAF — MTEF Requirement</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-1-1','exp-1-1')"><span class="opt-letter">A</span>January 1 of the current fiscal year</div>
+        <div class="option" onclick="answer(this,'correct','q-1-1','exp-1-1')"><span class="opt-letter">B</span>The second Monday in April each year</div>
+        <div class="option" onclick="answer(this,'wrong','q-1-1','exp-1-1')"><span class="opt-letter">C</span>December 31 of the preceding year</div>
+        <div class="option" onclick="answer(this,'wrong','q-1-1','exp-1-1')"><span class="opt-letter">D</span>June 30 of the current fiscal year</div>
+      </div>
+      <div class="explanation" id="exp-1-1"></div>
+    </div>
+
+    <div class="quiz-score" id="score-1"></div>
+  </div>
+  <div class="nav-buttons">
+    <button class="btn btn-secondary" onclick="goTo(0)">← Previous</button>
+    <button class="btn btn-primary" onclick="goTo(2)">Next Topic →</button>
+  </div>
+</section>
+
+<!-- ══ TOPIC 3: Revenue & Expenditure ══ -->
+<section class="topic-section" id="topic-2">
+  <div class="section-label">Topic 03</div>
+  <h2 class="section-title">Government Revenue & Expenditure Classification</h2>
+  <p class="section-desc">Understanding how government money flows in and out — the structure of federal revenue, taxation powers, and expenditure types.</p>
+
+  <div class="teach-block">
+    <h3><span class="num">1</span> Sources of Government Revenue in Nigeria</h3>
+    <table class="styled-table">
+      <tr><th>Revenue Type</th><th>Examples</th><th>Where It Goes</th></tr>
+      <tr><td>Federation Account Revenue</td><td>Oil revenues, Companies Income Tax, VAT</td><td>Shared among Federal, State, Local Governments per RMAFC formula</td></tr>
+      <tr><td>Federal Independent Revenue</td><td>Internally Generated Revenue (IGR) of Federal MDAs, fees, fines</td><td>Retained by Federal Government</td></tr>
+      <tr><td>State IGR</td><td>Personal Income Tax (PITA), Land Use Charge, state fees</td><td>Retained by State Government</td></tr>
+      <tr><td>Local Government Revenue</td><td>Property rates, market fees, LG allocations</td><td>Retained by LGAs</td></tr>
+    </table>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">2</span> Classification of Government Expenditure</h3>
+    <table class="styled-table">
+      <tr><th>Category</th><th>Description</th><th>Examples</th></tr>
+      <tr><td><strong>Recurrent Expenditure</strong></td><td>Routine, repeated spending on day-to-day operations</td><td>Salaries, overheads, debt service interest, pensions</td></tr>
+      <tr><td><strong>Capital Expenditure</strong></td><td>Spending that creates or improves non-current assets</td><td>Roads, hospitals, school buildings, equipment</td></tr>
+      <tr><td><strong>Statutory Expenditure</strong></td><td>Charged on the Consolidated Revenue Fund without legislative approval each year</td><td>Judiciary salaries, INEC funding, Auditor-General's office</td></tr>
+    </table>
+    <div class="warn-box"><strong>⚠ Key principle:</strong> Statutory expenditure is a FIRST CHARGE on the Consolidated Revenue Fund. It takes priority over other spending and does NOT require an annual appropriation — it is automatically authorised by the Constitution.</div>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">3</span> The Revenue Sharing Formula (RMAFC)</h3>
+    <div class="formula">
+      <div class="label">Nigeria's Vertical Revenue Sharing (Federation Account)</div>
+Federal Government:          52.68%
+State Governments:           26.72%
+Local Governments:           20.60%
+                              ------
+Total:                       100%
+
+Plus additional deductions for:
+- Derivation (13% of oil revenue goes to oil-producing states)
+- Special funds (e.g. FCT allocation, Ecology fund, Stabilisation fund)
+    </div>
+  </div>
+
+  <hr class="divider"/>
+  <div class="quiz-zone" id="quiz-2">
+    <div class="quiz-header"><span class="quiz-badge">Checkpoint Quiz</span><h4>Revenue & Expenditure</h4></div>
+
+    <div class="question-block" id="q-2-0">
+      <div class="q-text">Which of the following is an example of STATUTORY expenditure in Nigeria?</div>
+      <div class="q-source">ICAN PSAF — Expenditure Classification</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-2-0','exp-2-0')"><span class="opt-letter">A</span>Capital spending on the construction of a new federal road</div>
+        <div class="option" onclick="answer(this,'correct','q-2-0','exp-2-0')"><span class="opt-letter">B</span>Salaries of judicial officers, which are a first charge on the Consolidated Revenue Fund</div>
+        <div class="option" onclick="answer(this,'wrong','q-2-0','exp-2-0')"><span class="opt-letter">C</span>Payment of MDA overhead costs approved in the annual Appropriation Act</div>
+        <div class="option" onclick="answer(this,'wrong','q-2-0','exp-2-0')"><span class="opt-letter">D</span>Recurrent grants to state universities</div>
+      </div>
+      <div class="explanation" id="exp-2-0"></div>
+    </div>
+
+    <div class="question-block" id="q-2-1">
+      <div class="q-text">Oil-producing states in Nigeria receive an additional share of Federation Account revenue under the principle of:</div>
+      <div class="q-source">ICAN PSAF — Revenue Sharing / Derivation Principle</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-2-1','exp-2-1')"><span class="opt-letter">A</span>Equalisation grant</div>
+        <div class="option" onclick="answer(this,'wrong','q-2-1','exp-2-1')"><span class="opt-letter">B</span>State IGR sharing</div>
+        <div class="option" onclick="answer(this,'correct','q-2-1','exp-2-1')"><span class="opt-letter">C</span>Derivation — 13% of oil revenue goes to oil-producing states</div>
+        <div class="option" onclick="answer(this,'wrong','q-2-1','exp-2-1')"><span class="opt-letter">D</span>Population-based supplemental allocation</div>
+      </div>
+      <div class="explanation" id="exp-2-1"></div>
+    </div>
+
+    <div class="quiz-score" id="score-2"></div>
+  </div>
+  <div class="nav-buttons">
+    <button class="btn btn-secondary" onclick="goTo(1)">← Previous</button>
+    <button class="btn btn-primary" onclick="goTo(3)">Next Topic →</button>
+  </div>
+</section>
+
+<!-- ══ TOPIC 4: Consolidated Fund ══ -->
+<section class="topic-section" id="topic-3">
+  <div class="section-label">Topic 04</div>
+  <h2 class="section-title">Consolidated Revenue Fund & Other Public Funds</h2>
+  <p class="section-desc">The Consolidated Revenue Fund is the central government account under the Constitution. Understanding its structure and the funds around it is core PSAF knowledge.</p>
+
+  <div class="teach-block">
+    <h3><span class="num">1</span> Consolidated Revenue Fund (CRF)</h3>
+    <p>The <strong>CRF</strong> is the main government account established by <strong>Section 80 of the 1999 Constitution</strong>. All revenues and other money raised or received by the Federal Government shall be paid into the CRF.</p>
+    <p>Money can only be withdrawn from the CRF in three ways:</p>
+    <ol>
+      <li>To meet expenditure charged on the CRF (statutory expenditure)</li>
+      <li>Where authorised by an Appropriation Act or Supplementary Appropriation Act</li>
+      <li>Under a vote on account (not exceeding 1/2 of the previous year's budget) — to fund government before the Appropriation Act is passed</li>
+    </ol>
+    <div class="key-box"><strong>Constitutional basis:</strong> CRF = Section 80. Federation Account = Section 162. Both are separate accounts serving different purposes.</div>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">2</span> Other Key Government Funds</h3>
+    <table class="styled-table">
+      <tr><th>Fund</th><th>Purpose</th><th>Legal Basis</th></tr>
+      <tr><td>Federation Account</td><td>Pool into which all federal collectible revenues are paid before sharing among the 3 tiers</td><td>Section 162, 1999 Constitution</td></tr>
+      <tr><td>Contingency Fund</td><td>Caters for urgent/unforeseen expenditure when no provision exists in the Appropriation Act</td><td>Section 83, 1999 Constitution</td></tr>
+      <tr><td>Stabilisation Fund</td><td>Savings during high-revenue periods to cushion against revenue shortfalls</td><td>RMAFC Act</td></tr>
+      <tr><td>Ecological Fund</td><td>Addresses environmental challenges (erosion, flooding, desertification)</td><td>RMAFC sharing formula</td></tr>
+      <tr><td>Development Fund / Capital Fund</td><td>Finances capital projects in the development budget</td><td>Annual Appropriation Act</td></tr>
+    </table>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">3</span> Warrant System — Releasing Funds</h3>
+    <p>Even after the Appropriation Act is passed, funds are not automatically available to MDAs. They are released through a <strong>warrant system</strong>:</p>
+    <ul>
+      <li><strong>General Warrant:</strong> Authority to spend recurrent votes — issued by Accountant-General</li>
+      <li><strong>Specific Warrant:</strong> For capital projects or when a general warrant is insufficient</li>
+      <li><strong>Imprest Warrant:</strong> Small, petty cash-type advance for minor/immediate expenditures</li>
+      <li><strong>Virement:</strong> Transfer of appropriated funds between sub-heads within the same head, subject to approval</li>
+    </ul>
+  </div>
+
+  <hr class="divider"/>
+  <div class="quiz-zone" id="quiz-3">
+    <div class="quiz-header"><span class="quiz-badge">Checkpoint Quiz</span><h4>Consolidated Fund & Government Funds</h4></div>
+
+    <div class="question-block" id="q-3-0">
+      <div class="q-text">Under Section 80 of the 1999 Constitution, which of the following is a valid basis for withdrawing money from the Consolidated Revenue Fund?</div>
+      <div class="q-source">ICAN PSAF — Consolidated Revenue Fund</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-3-0','exp-3-0')"><span class="opt-letter">A</span>A verbal instruction from the President</div>
+        <div class="option" onclick="answer(this,'wrong','q-3-0','exp-3-0')"><span class="opt-letter">B</span>Approval by the Accountant-General alone</div>
+        <div class="option" onclick="answer(this,'correct','q-3-0','exp-3-0')"><span class="opt-letter">C</span>Authorisation by an Appropriation Act or to meet statutory charges on the CRF</div>
+        <div class="option" onclick="answer(this,'wrong','q-3-0','exp-3-0')"><span class="opt-letter">D</span>A request from any MDA</div>
+      </div>
+      <div class="explanation" id="exp-3-0"></div>
+    </div>
+
+    <div class="question-block" id="q-3-1">
+      <div class="q-text">The Contingency Fund in Nigeria is used for:</div>
+      <div class="q-source">ICAN PSAF — Contingency Fund Purpose</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-3-1','exp-3-1')"><span class="opt-letter">A</span>Paying salaries of civil servants during the year</div>
+        <div class="option" onclick="answer(this,'correct','q-3-1','exp-3-1')"><span class="opt-letter">B</span>Meeting urgent or unforeseen expenditure for which no provision exists in the Appropriation Act</div>
+        <div class="option" onclick="answer(this,'wrong','q-3-1','exp-3-1')"><span class="opt-letter">C</span>Saving oil windfall revenue for future generations</div>
+        <div class="option" onclick="answer(this,'wrong','q-3-1','exp-3-1')"><span class="opt-letter">D</span>Financing capital projects in the development budget</div>
+      </div>
+      <div class="explanation" id="exp-3-1"></div>
+    </div>
+
+    <div class="quiz-score" id="score-3"></div>
+  </div>
+  <div class="nav-buttons">
+    <button class="btn btn-secondary" onclick="goTo(2)">← Previous</button>
+    <button class="btn btn-primary" onclick="goTo(4)">Next Topic →</button>
+  </div>
+</section>
+
+<!-- ══ TOPIC 5: Public Accounts ══ -->
+<section class="topic-section" id="topic-4">
+  <div class="section-label">Topic 05</div>
+  <h2 class="section-title">Public Accounts — Officers, Books & Responsibilities</h2>
+  <p class="section-desc">Who are the key accounting officers in Nigeria's public sector? What records must they maintain? Tested regularly in PSAF exams.</p>
+
+  <div class="teach-block">
+    <h3><span class="num">1</span> Key Accounting Officers</h3>
+    <table class="styled-table">
+      <tr><th>Officer</th><th>Role</th></tr>
+      <tr><td><strong>Accountant-General of the Federation (AGF)</strong></td><td>Chief accounting officer of the Federation; maintains the government's general ledger; issues warrants; produces consolidated annual accounts</td></tr>
+      <tr><td><strong>Auditor-General for the Federation (AuGF)</strong></td><td>Independent auditor of all public accounts; reports to the National Assembly; cannot be removed by the Executive</td></tr>
+      <tr><td><strong>Accounting Officer (Permanent Secretary/HoA)</strong></td><td>Responsible for the accounts of their MDA; signs off on expenditure; answers to PAC for any irregularities</td></tr>
+      <tr><td><strong>Sub-Accounting Officer</strong></td><td>Heads lower units; responsible to Accounting Officer for financial transactions under them</td></tr>
+      <tr><td><strong>Revenue Collector</strong></td><td>Receives government revenue; issues official receipts; remits to designated accounts</td></tr>
+    </table>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">2</span> Principal Books of Account</h3>
+    <ul>
+      <li><strong>Cash Book:</strong> Primary book recording all cash receipts and payments</li>
+      <li><strong>Vote Book / Expenditure Ledger:</strong> Tracks appropriation, warrants issued, and expenditure per vote head</li>
+      <li><strong>Revenue Register:</strong> Records all amounts due and collected for each revenue head</li>
+      <li><strong>Store/Inventory Records:</strong> Documents government assets, stores received and issued</li>
+      <li><strong>Register of Fixed Assets:</strong> Inventories non-current assets of the government</li>
+      <li><strong>Advance/Loan Registers:</strong> Tracks advances made to staff or third parties and repayments</li>
+    </ul>
+    <div class="key-box"><strong>Vote Book discipline:</strong> No expenditure should exceed the amount authorised by warrant. The Vote Book is the key control preventing over-expenditure of appropriated funds.</div>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">3</span> The Public Accounts Committee (PAC)</h3>
+    <p>The <strong>PAC</strong> is a committee of the legislature (National Assembly or State House of Assembly) that examines the Auditor-General's report and calls Accounting Officers to account for any financial irregularities, waste, or misapplication of public funds.</p>
+    <ul>
+      <li>The PAC can summon any Accounting Officer to appear and explain irregularities</li>
+      <li>It has power to recommend surcharges, prosecution, or disciplinary action</li>
+      <li>It is the primary legislative oversight mechanism for public financial accountability</li>
+    </ul>
+  </div>
+
+  <hr class="divider"/>
+  <div class="quiz-zone" id="quiz-4">
+    <div class="quiz-header"><span class="quiz-badge">Checkpoint Quiz</span><h4>Public Accounts Officers & Records</h4></div>
+
+    <div class="question-block" id="q-4-0">
+      <div class="q-text">The Auditor-General for the Federation reports directly to:</div>
+      <div class="q-source">ICAN PSAF — Auditor-General's Role</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-4-0','exp-4-0')"><span class="opt-letter">A</span>The President of the Federal Republic</div>
+        <div class="option" onclick="answer(this,'wrong','q-4-0','exp-4-0')"><span class="opt-letter">B</span>The Accountant-General of the Federation</div>
+        <div class="option" onclick="answer(this,'correct','q-4-0','exp-4-0')"><span class="opt-letter">C</span>The National Assembly (through the Public Accounts Committee)</div>
+        <div class="option" onclick="answer(this,'wrong','q-4-0','exp-4-0')"><span class="opt-letter">D</span>The Minister of Finance</div>
+      </div>
+      <div class="explanation" id="exp-4-0"></div>
+    </div>
+
+    <div class="question-block" id="q-4-1">
+      <div class="q-text">The principal book used to track the balance of appropriated funds remaining available for spending by an MDA is the:</div>
+      <div class="q-source">ICAN PSAF — Public Sector Books of Account</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-4-1','exp-4-1')"><span class="opt-letter">A</span>Cash Book</div>
+        <div class="option" onclick="answer(this,'correct','q-4-1','exp-4-1')"><span class="opt-letter">B</span>Vote Book (Expenditure Ledger)</div>
+        <div class="option" onclick="answer(this,'wrong','q-4-1','exp-4-1')"><span class="opt-letter">C</span>Revenue Register</div>
+        <div class="option" onclick="answer(this,'wrong','q-4-1','exp-4-1')"><span class="opt-letter">D</span>Advances Register</div>
+      </div>
+      <div class="explanation" id="exp-4-1"></div>
+    </div>
+
+    <div class="quiz-score" id="score-4"></div>
+  </div>
+  <div class="nav-buttons">
+    <button class="btn btn-secondary" onclick="goTo(3)">← Previous</button>
+    <button class="btn btn-primary" onclick="goTo(5)">Next Topic →</button>
+  </div>
+</section>
+<!-- ══ TOPIC 6: Financial Statements ══ -->
+<section class="topic-section" id="topic-5">
+  <div class="section-label">Topic 06</div>
+  <h2 class="section-title">Government Financial Statements under IPSAS</h2>
+  <p class="section-desc">The complete set of financial statements a government entity must prepare — and what each one shows.</p>
+
+  <div class="teach-block">
+    <h3><span class="num">1</span> Components of Government Financial Statements (Accrual IPSAS)</h3>
+    <table class="styled-table">
+      <tr><th>Statement</th><th>IPSAS Private Sector Equivalent</th><th>What It Shows</th></tr>
+      <tr><td>Statement of Financial Position</td><td>Balance Sheet (IAS 1)</td><td>Assets, liabilities and net assets/equity of the government entity</td></tr>
+      <tr><td>Statement of Financial Performance</td><td>Income Statement / P&L</td><td>Revenue and expenses for the period; surplus or deficit</td></tr>
+      <tr><td>Statement of Changes in Net Assets/Equity</td><td>Statement of Changes in Equity</td><td>Movements in government's net assets during the year</td></tr>
+      <tr><td>Cash Flow Statement</td><td>Statement of Cash Flows (IAS 7)</td><td>Cash inflows and outflows; classified as operating, investing, financing</td></tr>
+      <tr><td>Statement of Comparison of Budget and Actual Amounts</td><td>No equivalent in IFRS</td><td>Compares original/final approved budget to actual outturn (IPSAS 24)</td></tr>
+      <tr><td>Notes to the Financial Statements</td><td>Notes</td><td>Accounting policies and detailed disclosures</td></tr>
+    </table>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">2</span> Statement of Financial Performance — Key Lines</h3>
+    <div class="formula">
+      <div class="label">Government Statement of Financial Performance</div>
+REVENUE:
+  Tax revenue (non-exchange)                        X
+  Non-tax revenue (fees, fines, licences)           X
+  Transfers/grants from other government entities   X
+  Aid and donations                                 X
+TOTAL REVENUE                                       X
+
+EXPENSES:
+  Employee costs (salaries, pensions)              (X)
+  Goods and services                               (X)
+  Depreciation and amortisation                    (X)
+  Finance costs (interest on public debt)          (X)
+  Transfer payments (social benefits, subsidies)   (X)
+TOTAL EXPENSES                                     (X)
+
+SURPLUS / (DEFICIT) FOR THE PERIOD                  X
+    </div>
+    <div class="key-box"><strong>Surplus vs Profit:</strong> Government entities do not have "profit" — they have a <strong>surplus</strong> (revenues exceed expenses) or <strong>deficit</strong> (expenses exceed revenues). The deficit is financed by borrowing or drawing down reserves.</div>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">3</span> Budget vs Actual Comparison (IPSAS 24)</h3>
+    <p>IPSAS 24 requires entities that make their budgets publicly available to present a comparison of budget and actual amounts. The comparison must show:</p>
+    <ul>
+      <li><strong>Original budget</strong> — the initial approved budget</li>
+      <li><strong>Final budget</strong> — the original budget adjusted for virements, supplementary estimates</li>
+      <li><strong>Actual amounts</strong> — on the same basis as the budget (often cash basis)</li>
+      <li><strong>Variance</strong> — final budget vs actual, with explanations for material differences</li>
+    </ul>
+  </div>
+
+  <hr class="divider"/>
+  <div class="quiz-zone" id="quiz-5">
+    <div class="quiz-header"><span class="quiz-badge">Checkpoint Quiz</span><h4>Government Financial Statements</h4></div>
+
+    <div class="question-block" id="q-5-0">
+      <div class="q-text">Under accrual-basis IPSAS, which statement is unique to government reporting and has no direct equivalent under IFRS?</div>
+      <div class="q-source">ICAN PSAF — IPSAS 24 (Budget Reporting)</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-5-0','exp-5-0')"><span class="opt-letter">A</span>Statement of Financial Position</div>
+        <div class="option" onclick="answer(this,'wrong','q-5-0','exp-5-0')"><span class="opt-letter">B</span>Cash Flow Statement</div>
+        <div class="option" onclick="answer(this,'correct','q-5-0','exp-5-0')"><span class="opt-letter">C</span>Statement of Comparison of Budget and Actual Amounts (IPSAS 24)</div>
+        <div class="option" onclick="answer(this,'wrong','q-5-0','exp-5-0')"><span class="opt-letter">D</span>Statement of Changes in Net Assets</div>
+      </div>
+      <div class="explanation" id="exp-5-0"></div>
+    </div>
+
+    <div class="question-block" id="q-5-1">
+      <div class="q-text">When a government entity's expenses exceed its revenues in a period, the resulting figure in the Statement of Financial Performance is called a:</div>
+      <div class="q-source">ICAN PSAF — Surplus/Deficit Terminology</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-5-1','exp-5-1')"><span class="opt-letter">A</span>Net loss</div>
+        <div class="option" onclick="answer(this,'correct','q-5-1','exp-5-1')"><span class="opt-letter">B</span>Deficit for the period</div>
+        <div class="option" onclick="answer(this,'wrong','q-5-1','exp-5-1')"><span class="opt-letter">C</span>Negative profit</div>
+        <div class="option" onclick="answer(this,'wrong','q-5-1','exp-5-1')"><span class="opt-letter">D</span>Revenue shortfall</div>
+      </div>
+      <div class="explanation" id="exp-5-1"></div>
+    </div>
+
+    <div class="quiz-score" id="score-5"></div>
+  </div>
+  <div class="nav-buttons">
+    <button class="btn btn-secondary" onclick="goTo(4)">← Previous</button>
+    <button class="btn btn-primary" onclick="goTo(6)">Next Topic →</button>
+  </div>
+</section>
+
+<!-- ══ TOPIC 7: Public Procurement ══ -->
+<section class="topic-section" id="topic-6">
+  <div class="section-label">Topic 07</div>
+  <h2 class="section-title">Public Procurement — PPA 2007</h2>
+  <p class="section-desc">The Public Procurement Act 2007 governs how government contracts are awarded. Tested regularly — especially thresholds, methods, and the role of BPP.</p>
+
+  <div class="teach-block">
+    <h3><span class="num">1</span> The Bureau of Public Procurement (BPP)</h3>
+    <p>The <strong>BPP</strong> is established under the Public Procurement Act (PPA) 2007 as the regulatory authority for public procurement. Its key functions include:</p>
+    <ul>
+      <li>Formulating general policies on public procurement</li>
+      <li>Setting procurement standards and procedures</li>
+      <li>Publishing standard bidding documents</li>
+      <li>Publishing the <strong>Monthly Price Intelligence Report</strong> to guide procurement costs</li>
+      <li>Certifying "Certificate of No Objection" for contracts above the threshold requiring BPP review</li>
+      <li>Training procurement officers and building institutional capacity</li>
+      <li>Maintaining a database of federal contractors and suppliers (vendor register)</li>
+    </ul>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">2</span> Procurement Methods under PPA 2007</h3>
+    <table class="styled-table">
+      <tr><th>Method</th><th>When Used</th><th>Key Feature</th></tr>
+      <tr><td><strong>Open Competitive Bidding (OCB)</strong></td><td>Default method for most contracts above threshold</td><td>Public advertisement; widest competition; most transparent</td></tr>
+      <tr><td><strong>Restricted Tendering</strong></td><td>Limited suppliers exist; specialised goods/services</td><td>Invitation to a pre-selected list of qualified bidders</td></tr>
+      <tr><td><strong>Request for Quotations (RFQ)</strong></td><td>Small value contracts below thresholds</td><td>Minimum 3 quotations; no public advertisement needed</td></tr>
+      <tr><td><strong>Direct Procurement (Single Source)</strong></td><td>Emergency; only one supplier; proprietary goods</td><td>Bypasses competition; requires BPP approval; strictly regulated</td></tr>
+      <tr><td><strong>Expression of Interest (EOI)</strong></td><td>Pre-qualification stage for large/complex contracts</td><td>Filters bidders before inviting full bids</td></tr>
+    </table>
+    <div class="warn-box"><strong>⚠ Exam focus:</strong> Direct procurement (single-source) is the most abused method in practice. The conditions for its valid use — emergency, sole supplier, national security, extension of existing contract — are frequently tested.</div>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">3</span> Procurement Thresholds (Approving Authorities)</h3>
+    <div class="formula">
+      <div class="label">Federal Procurement Approval Thresholds (approximate)</div>
+Goods:
+  MDA Procurement Committee:      Up to ₦2.5 million
+  Ministerial Tender Board:       ₦2.5m – ₦100m
+  Federal Executive Council (FEC):Above ₦100 million
+
+Works/Construction:
+  MDA:                            Up to ₦10 million
+  Ministerial Tender Board:       ₦10m – ₦500m
+  FEC:                            Above ₦500 million
+
+Note: All contracts above ₦100m also require BPP "No Objection"
+certificate before award.
+    </div>
+  </div>
+
+  <hr class="divider"/>
+  <div class="quiz-zone" id="quiz-6">
+    <div class="quiz-header"><span class="quiz-badge">Checkpoint Quiz</span><h4>Public Procurement — PPA 2007</h4></div>
+
+    <div class="question-block" id="q-6-0">
+      <div class="q-text">Under the Public Procurement Act 2007, which procurement method is the DEFAULT method and ensures the widest possible competition?</div>
+      <div class="q-source">ICAN PSAF — Procurement Methods</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-6-0','exp-6-0')"><span class="opt-letter">A</span>Direct procurement (single source)</div>
+        <div class="option" onclick="answer(this,'wrong','q-6-0','exp-6-0')"><span class="opt-letter">B</span>Request for quotations</div>
+        <div class="option" onclick="answer(this,'correct','q-6-0','exp-6-0')"><span class="opt-letter">C</span>Open Competitive Bidding (OCB)</div>
+        <div class="option" onclick="answer(this,'wrong','q-6-0','exp-6-0')"><span class="opt-letter">D</span>Restricted tendering</div>
+      </div>
+      <div class="explanation" id="exp-6-0"></div>
+    </div>
+
+    <div class="question-block" id="q-6-1">
+      <div class="q-text">Which body issues the "Certificate of No Objection" required before a federal contract above the BPP threshold can be awarded?</div>
+      <div class="q-source">ICAN PSAF — Bureau of Public Procurement</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-6-1','exp-6-1')"><span class="opt-letter">A</span>The Federal Ministry of Finance</div>
+        <div class="option" onclick="answer(this,'correct','q-6-1','exp-6-1')"><span class="opt-letter">B</span>The Bureau of Public Procurement (BPP)</div>
+        <div class="option" onclick="answer(this,'wrong','q-6-1','exp-6-1')"><span class="opt-letter">C</span>The National Assembly</div>
+        <div class="option" onclick="answer(this,'wrong','q-6-1','exp-6-1')"><span class="opt-letter">D</span>The Economic and Financial Crimes Commission (EFCC)</div>
+      </div>
+      <div class="explanation" id="exp-6-1"></div>
+    </div>
+
+    <div class="quiz-score" id="score-6"></div>
+  </div>
+  <div class="nav-buttons">
+    <button class="btn btn-secondary" onclick="goTo(5)">← Previous</button>
+    <button class="btn btn-primary" onclick="goTo(7)">Next Topic →</button>
+  </div>
+</section>
+
+<!-- ══ TOPIC 8: Internal Control & Audit ══ -->
+<section class="topic-section" id="topic-7">
+  <div class="section-label">Topic 08</div>
+  <h2 class="section-title">Public Sector Internal Control & Audit</h2>
+  <p class="section-desc">Effective internal control and audit are the backbone of accountability in the public sector — tested in virtually every PSAF exam diet.</p>
+
+  <div class="teach-block">
+    <h3><span class="num">1</span> Internal Control in the Public Sector</h3>
+    <p>Internal controls in government entities exist to:</p>
+    <ul>
+      <li>Ensure <strong>compliance</strong> with laws, regulations, and government financial regulations (GFRs)</li>
+      <li><strong>Safeguard public assets</strong> from theft, waste, and misuse</li>
+      <li>Promote <strong>efficiency and economy</strong> in government operations</li>
+      <li>Ensure <strong>accuracy and reliability</strong> of financial information</li>
+      <li>Prevent and detect <strong>fraud and corruption</strong></li>
+    </ul>
+    <table class="styled-table">
+      <tr><th>Control Type</th><th>Example in Public Sector</th></tr>
+      <tr><td>Authorisation controls</td><td>Expenditure requires warrant before payment; procurement requires approvals per PPA thresholds</td></tr>
+      <tr><td>Segregation of duties</td><td>The person who raises a payment voucher must be different from the person who approves and signs the cheque</td></tr>
+      <tr><td>Physical controls</td><td>Secured treasury, lockable stores, register of fixed assets</td></tr>
+      <tr><td>Reconciliation controls</td><td>Monthly bank reconciliation by Accountant; Vote Book reconciliation</td></tr>
+      <tr><td>Documentation</td><td>Payment vouchers, receipts, stores records, delivery notes</td></tr>
+    </table>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">2</span> The Office of the Auditor-General (OAuGF)</h3>
+    <p>The Auditor-General for the Federation (AuGF) is the external auditor of all federal public accounts. Key features:</p>
+    <ul>
+      <li>Established under <strong>Section 85–86, 1999 Constitution</strong></li>
+      <li><strong>Independent of the Executive</strong> — appointed by the President on recommendation of the Federal Civil Service Commission, confirmed by the Senate</li>
+      <li>Cannot be <strong>removed by the President alone</strong> — requires 2/3 of the Senate</li>
+      <li>Has access to <strong>all government books, accounts, and records</strong></li>
+      <li>Reports to the <strong>National Assembly</strong> within 90 days of receiving the AGF's accounts</li>
+      <li>Cannot express opinion on the <strong>economy, policy, or wisdom</strong> of government expenditure — only on its legality and regularity</li>
+    </ul>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">3</span> Value for Money (VFM) Audit</h3>
+    <p>Beyond financial regularity, modern public sector audit also examines <strong>Value for Money</strong> — the 3Es:</p>
+    <ul>
+      <li><strong>Economy:</strong> Are resources acquired at minimum cost for the required quality?</li>
+      <li><strong>Efficiency:</strong> Are resources converted into outputs with minimum waste?</li>
+      <li><strong>Effectiveness:</strong> Do the outputs actually achieve the intended policy outcomes?</li>
+    </ul>
+    <div class="key-box"><strong>VFM vs Financial Audit:</strong> Financial audit checks that money was spent lawfully and accurately recorded. VFM audit checks whether the spending actually delivered what it was supposed to — a higher-level accountability assessment.</div>
+  </div>
+
+  <hr class="divider"/>
+  <div class="quiz-zone" id="quiz-7">
+    <div class="quiz-header"><span class="quiz-badge">Checkpoint Quiz</span><h4>Internal Control & Audit</h4></div>
+
+    <div class="question-block" id="q-7-0">
+      <div class="q-text">The Auditor-General for the Federation is constitutionally independent primarily because:</div>
+      <div class="q-source">ICAN PSAF — AuGF Independence</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-7-0','exp-7-0')"><span class="opt-letter">A</span>The President can dismiss them at will</div>
+        <div class="option" onclick="answer(this,'correct','q-7-0','exp-7-0')"><span class="opt-letter">B</span>Removal requires a 2/3 majority of the Senate, not a presidential decision alone</div>
+        <div class="option" onclick="answer(this,'wrong','q-7-0','exp-7-0')"><span class="opt-letter">C</span>They report to the Ministry of Finance, not the legislature</div>
+        <div class="option" onclick="answer(this,'wrong','q-7-0','exp-7-0')"><span class="opt-letter">D</span>They are appointed by the National Assembly directly</div>
+      </div>
+      <div class="explanation" id="exp-7-0"></div>
+    </div>
+
+    <div class="question-block" id="q-7-1">
+      <div class="q-text">In a Value for Money audit, "Effectiveness" specifically means:</div>
+      <div class="q-source">ICAN PSAF — VFM Audit / 3Es</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-7-1','exp-7-1')"><span class="opt-letter">A</span>Acquiring resources at the lowest possible cost</div>
+        <div class="option" onclick="answer(this,'wrong','q-7-1','exp-7-1')"><span class="opt-letter">B</span>Converting inputs into outputs with minimum waste</div>
+        <div class="option" onclick="answer(this,'correct','q-7-1','exp-7-1')"><span class="opt-letter">C</span>Whether outputs actually achieve the intended policy outcomes</div>
+        <div class="option" onclick="answer(this,'wrong','q-7-1','exp-7-1')"><span class="opt-letter">D</span>Ensuring all transactions are properly authorised</div>
+      </div>
+      <div class="explanation" id="exp-7-1"></div>
+    </div>
+
+    <div class="quiz-score" id="score-7"></div>
+  </div>
+  <div class="nav-buttons">
+    <button class="btn btn-secondary" onclick="goTo(6)">← Previous</button>
+    <button class="btn btn-primary" onclick="goTo(8)">Next Topic →</button>
+  </div>
+</section>
+
+<!-- ══ TOPIC 9: Fiscal Responsibility ══ -->
+<section class="topic-section" id="topic-8">
+  <div class="section-label">Topic 09</div>
+  <h2 class="section-title">Fiscal Responsibility Act 2007</h2>
+  <p class="section-desc">Nigeria's Fiscal Responsibility Act (FRA) sets the rules for prudent management of the country's finances — a compulsory knowledge area for PSAF.</p>
+
+  <div class="teach-block">
+    <h3><span class="num">1</span> Key Objectives of the FRA 2007</h3>
+    <ul>
+      <li>Promote <strong>transparency and accountability</strong> in fiscal operations</li>
+      <li>Ensure <strong>prudent management</strong> of national resources</li>
+      <li>Prevent <strong>fiscal irresponsibility</strong> and excessive deficits</li>
+      <li>Align annual budgets with a <strong>medium-term fiscal framework</strong></li>
+      <li>Protect future generations from unsustainable debt burden</li>
+    </ul>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">2</span> Key Provisions of the FRA 2007</h3>
+    <table class="styled-table">
+      <tr><th>Section</th><th>Provision</th></tr>
+      <tr><td>Sec. 11</td><td>FGN must prepare a 3-year MTEF and forward to NASS by 2nd Monday in April</td></tr>
+      <tr><td>Sec. 12</td><td>Annual budget must be consistent with the approved MTEF</td></tr>
+      <tr><td>Sec. 16</td><td>Total expenditure must not exceed aggregate revenue plus a deficit not exceeding 3% of GDP</td></tr>
+      <tr><td>Sec. 21</td><td>FGN must maintain a <strong>Fiscal Savings Fund (Excess Crude Account)</strong> when oil revenues exceed benchmark</td></tr>
+      <tr><td>Sec. 27</td><td>All government borrowings must be used for capital expenditure, not recurrent spending</td></tr>
+      <tr><td>Sec. 44</td><td>States and LGAs must also comply with fiscal responsibility provisions</td></tr>
+    </table>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">3</span> The Excess Crude Account (ECA) / Sovereign Wealth Fund</h3>
+    <p>When oil revenue exceeds the benchmark price built into the budget, the surplus goes into the <strong>Excess Crude Account (ECA)</strong> — Nigeria's fiscal savings buffer. This helps stabilise the budget when oil prices fall below the benchmark.</p>
+    <p>The <strong>Nigeria Sovereign Investment Authority (NSIA)</strong> was established to manage the Nigerian Sovereign Wealth Fund, which consists of three tranches:</p>
+    <ul>
+      <li><strong>Stabilisation Fund:</strong> Short-term buffer to cushion revenue shocks</li>
+      <li><strong>Future Generations Fund:</strong> Long-term savings invested for future Nigerians</li>
+      <li><strong>Nigeria Infrastructure Fund:</strong> Domestic infrastructure investments</li>
+    </ul>
+  </div>
+
+  <hr class="divider"/>
+  <div class="quiz-zone" id="quiz-8">
+    <div class="quiz-header"><span class="quiz-badge">Checkpoint Quiz</span><h4>Fiscal Responsibility Act 2007</h4></div>
+
+    <div class="question-block" id="q-8-0">
+      <div class="q-text">Under the Fiscal Responsibility Act 2007, government borrowings must be used:</div>
+      <div class="q-source">ICAN PSAF — FRA 2007 Section 27</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-8-0','exp-8-0')"><span class="opt-letter">A</span>For both recurrent and capital expenditure as needed</div>
+        <div class="option" onclick="answer(this,'correct','q-8-0','exp-8-0')"><span class="opt-letter">B</span>Only for capital expenditure — not to fund recurrent spending</div>
+        <div class="option" onclick="answer(this,'wrong','q-8-0','exp-8-0')"><span class="opt-letter">C</span>Exclusively to service existing debt</div>
+        <div class="option" onclick="answer(this,'wrong','q-8-0','exp-8-0')"><span class="opt-letter">D</span>For salary payments during fiscal emergencies</div>
+      </div>
+      <div class="explanation" id="exp-8-0"></div>
+    </div>
+
+    <div class="question-block" id="q-8-1">
+      <div class="q-text">When oil revenues exceed the budgeted benchmark price, the surplus under the FRA 2007 must be:</div>
+      <div class="q-source">ICAN PSAF — Excess Crude Account / FRA Section 21</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-8-1','exp-8-1')"><span class="opt-letter">A</span>Shared immediately among all three tiers of government</div>
+        <div class="option" onclick="answer(this,'correct','q-8-1','exp-8-1')"><span class="opt-letter">B</span>Saved in the Fiscal Savings Fund (Excess Crude Account) as a buffer for future shortfalls</div>
+        <div class="option" onclick="answer(this,'wrong','q-8-1','exp-8-1')"><span class="opt-letter">C</span>Used to pay off all outstanding national debt</div>
+        <div class="option" onclick="answer(this,'wrong','q-8-1','exp-8-1')"><span class="opt-letter">D</span>Returned to the Central Bank of Nigeria</div>
+      </div>
+      <div class="explanation" id="exp-8-1"></div>
+    </div>
+
+    <div class="quiz-score" id="score-8"></div>
+  </div>
+  <div class="nav-buttons">
+    <button class="btn btn-secondary" onclick="goTo(7)">← Previous</button>
+    <button class="btn btn-primary" onclick="goTo(9)">Next Topic →</button>
+  </div>
+</section>
+
+<!-- ══ TOPIC 10: Public Debt Management ══ -->
+<section class="topic-section" id="topic-9">
+  <div class="section-label">Topic 10</div>
+  <h2 class="section-title">Public Debt Management</h2>
+  <p class="section-desc">How government borrowing is authorised, managed, and monitored — including the role of the DMO and Nigeria's debt sustainability framework.</p>
+
+  <div class="teach-block">
+    <h3><span class="num">1</span> The Debt Management Office (DMO)</h3>
+    <p>The <strong>DMO</strong> was established by the Debt Management Office (Establishment) Act 2003. Its key functions:</p>
+    <ul>
+      <li>Maintain a <strong>comprehensive database</strong> of all government debt (domestic and external)</li>
+      <li>Prepare and implement the government's <strong>Medium-Term Debt Management Strategy (MTDS)</strong></li>
+      <li>Advise the government on the <strong>terms and conditions</strong> of new borrowing</li>
+      <li>Issue and manage <strong>FGN Bonds</strong>, Treasury Bills, and Sukuk on behalf of the FGN</li>
+      <li>Negotiate and manage <strong>external loans</strong> (multilateral, bilateral, commercial)</li>
+      <li>Monitor and report on Nigeria's <strong>debt portfolio</strong> and debt sustainability</li>
+    </ul>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">2</span> Types of Government Debt</h3>
+    <table class="styled-table">
+      <tr><th>Type</th><th>Source</th><th>Example</th></tr>
+      <tr><td>Domestic Debt</td><td>Borrowed from within Nigeria</td><td>FGN Bonds, Treasury Bills, Promissory Notes</td></tr>
+      <tr><td>External Debt (Multilateral)</td><td>International development institutions</td><td>World Bank, AfDB, IMF loans</td></tr>
+      <tr><td>External Debt (Bilateral)</td><td>Government-to-government loans</td><td>China Exim Bank, Afreximbank</td></tr>
+      <tr><td>External Debt (Commercial)</td><td>International capital markets</td><td>Eurobonds, Diaspora Bonds</td></tr>
+      <tr><td>Contingent Liabilities</td><td>Not yet debt, but potential obligations</td><td>Government guarantees on state borrowings</td></tr>
+    </table>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">3</span> Debt Sustainability Analysis (DSA)</h3>
+    <p>Debt sustainability refers to a government's ability to meet its current and future debt obligations without requiring exceptional financing or defaulting. Key ratios used:</p>
+    <div class="formula">
+      <div class="label">Key Debt Sustainability Indicators</div>
+Debt-to-GDP Ratio       = Total Public Debt / Nominal GDP × 100%
+  (Nigeria's IMF benchmark ceiling: typically 40–55% for emerging economies)
+
+Debt Service-to-Revenue = Total Debt Service / Total Revenue × 100%
+  (Nigeria's concern: this ratio has been very high — over 80% in recent years,
+   meaning most revenue goes to debt repayment)
+
+External Debt-to-Exports = External Debt / Total Export Earnings × 100%
+  (Measures ability to earn foreign exchange to service external debt)
+    </div>
+    <div class="key-box"><strong>Nigeria's challenge:</strong> While Nigeria's debt-to-GDP ratio appears moderate by international standards, its <strong>debt service-to-revenue ratio</strong> is extremely high, meaning a disproportionate share of government revenue goes to paying debt rather than delivering services. This is the key fiscal risk for Nigeria.</div>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">4</span> Constitutional Provisions on Borrowing</h3>
+    <ul>
+      <li>Section 21 FRA: All borrowings must be for capital expenditure only</li>
+      <li>Section 41 FRA: External borrowing must be approved by the <strong>National Assembly</strong></li>
+      <li>The <strong>Annual Borrowing Plan</strong> (part of the MTEF/budget) must be laid before and approved by NASS</li>
+      <li>State governments may borrow but the <strong>FGN cannot guarantee</strong> state debt without National Assembly approval</li>
+    </ul>
+  </div>
+
+  <hr class="divider"/>
+  <div class="quiz-zone" id="quiz-9">
+    <div class="quiz-header"><span class="quiz-badge">Final Checkpoint Quiz</span><h4>Public Debt Management</h4></div>
+
+    <div class="question-block" id="q-9-0">
+      <div class="q-text">Which institution is responsible for issuing FGN Bonds and Treasury Bills on behalf of the Federal Government of Nigeria?</div>
+      <div class="q-source">ICAN PSAF — Debt Management Office (DMO)</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-9-0','exp-9-0')"><span class="opt-letter">A</span>The Central Bank of Nigeria (CBN)</div>
+        <div class="option" onclick="answer(this,'wrong','q-9-0','exp-9-0')"><span class="opt-letter">B</span>The Federal Ministry of Finance</div>
+        <div class="option" onclick="answer(this,'correct','q-9-0','exp-9-0')"><span class="opt-letter">C</span>The Debt Management Office (DMO)</div>
+        <div class="option" onclick="answer(this,'wrong','q-9-0','exp-9-0')"><span class="opt-letter">D</span>The Securities and Exchange Commission (SEC)</div>
+      </div>
+      <div class="explanation" id="exp-9-0"></div>
+    </div>
+
+    <div class="question-block" id="q-9-1">
+      <div class="q-text">Nigeria's most pressing debt sustainability concern is best captured by which ratio?</div>
+      <div class="q-source">ICAN PSAF — Debt Sustainability Analysis</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-9-1','exp-9-1')"><span class="opt-letter">A</span>Debt-to-GDP ratio — because it is above 80%</div>
+        <div class="option" onclick="answer(this,'correct','q-9-1','exp-9-1')"><span class="opt-letter">B</span>Debt service-to-revenue ratio — because most revenue goes to debt repayment, leaving little for services</div>
+        <div class="option" onclick="answer(this,'wrong','q-9-1','exp-9-1')"><span class="opt-letter">C</span>External debt-to-imports ratio — because Nigeria imports too much</div>
+        <div class="option" onclick="answer(this,'wrong','q-9-1','exp-9-1')"><span class="opt-letter">D</span>Domestic debt-to-reserves ratio — because CBN reserves are too low</div>
+      </div>
+      <div class="explanation" id="exp-9-1"></div>
+    </div>
+
+    <div class="question-block" id="q-9-2">
+      <div class="q-text">Under the Fiscal Responsibility Act 2007, external borrowing by the FGN requires approval from:</div>
+      <div class="q-source">ICAN PSAF — FRA 2007 / Constitutional Borrowing Rules</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-9-2','exp-9-2')"><span class="opt-letter">A</span>The President alone</div>
+        <div class="option" onclick="answer(this,'wrong','q-9-2','exp-9-2')"><span class="opt-letter">B</span>The Central Bank of Nigeria</div>
+        <div class="option" onclick="answer(this,'correct','q-9-2','exp-9-2')"><span class="opt-letter">C</span>The National Assembly</div>
+        <div class="option" onclick="answer(this,'wrong','q-9-2','exp-9-2')"><span class="opt-letter">D</span>The Debt Management Office only</div>
+      </div>
+      <div class="explanation" id="exp-9-2"></div>
+    </div>
+
+    <div class="quiz-score" id="score-9"></div>
+  </div>
+
+  <div class="nav-buttons">
+    <button class="btn btn-secondary" onclick="goTo(8)">← Previous</button>
+    <button class="btn btn-primary" onclick="showComplete()">Finish →</button>
+  </div>
+</section>
+
+<!-- COMPLETE BANNER -->
+<div class="complete-banner" id="completeBanner">
+  <div class="trophy">🏆</div>
+  <h2>All 5 Subjects Complete!</h2>
+  <p>You've finished the entire ICAN Skills Level study suite —<br/>Financial Management · Performance Management · Financial Reporting · Taxation · Public Sector Accounting &amp; Finance.<br/>You are now fully equipped for your ICAN Skills Level examinations.</p>
+  <button class="btn btn-primary" onclick="goTo(0)">Start Over</button>
+  <a href="ICAN_Skills_Home.html" class="home-btn-bottom" style="color:inherit; margin-left:12px;">← Back to Study Hub</a>
+</div>
+
+</div>
+
+<script>
+const explanations = {
+  'exp-0-0':{ correct:'B', text:'<strong>B is correct.</strong> The primary objective of IPSAS-based government financial reporting is <strong>accountability and stewardship</strong> — demonstrating to citizens, legislators, and oversight bodies that public resources have been used legally, efficiently, and for their intended purposes. This is fundamentally different from IFRS, where the primary objective is decision-useful information for capital market investors.' },
+  'exp-0-1':{ correct:'B', text:'<strong>B is correct.</strong> Under IPSAS 23, when a grant has a condition attached, the entity cannot recognise it as revenue until the condition is met. It must first be <strong>recognised as a liability</strong> (deferred revenue / unspent grant). As the condition is satisfied (e.g. as roads are constructed), the liability is progressively transferred to revenue.' },
+  'exp-0-2':{ correct:'B', text:'<strong>B is correct.</strong> IPSAS 24 requires entities that make their approved budgets publicly available to present a <strong>Statement of Comparison of Budget and Actual Amounts</strong>. There is no equivalent requirement under IFRS — private sector companies have no obligation to present their budgets or compare them to actual results in their financial statements.' },
+  'exp-1-0':{ correct:'B', text:'<strong>B is correct.</strong> Zero-Based Budgeting (ZBB) starts every budget cycle from a zero base — every expenditure item must be <strong>justified from scratch</strong>, regardless of whether it was approved in prior years. This contrasts sharply with incremental budgeting, which simply takes the prior year\'s approved budget and adds a percentage increase.' },
+  'exp-1-1':{ correct:'B', text:'<strong>B is correct.</strong> Section 11 of the Fiscal Responsibility Act 2007 mandates that the FGN prepare a 3-year MTEF and forward it to the National Assembly <strong>not later than the second Monday in April</strong> each year, to guide the preparation and passage of the annual Appropriation Bill.' },
+  'exp-2-0':{ correct:'B', text:'<strong>B is correct.</strong> Statutory expenditure is spending that the Constitution places as a <strong>first charge on the Consolidated Revenue Fund</strong> — it is automatically authorised without needing an annual appropriation. Judicial salaries are the classic example (to protect judicial independence from executive financial pressure).' },
+  'exp-2-1':{ correct:'C', text:'<strong>C is correct.</strong> The <strong>derivation principle</strong> provides that oil-producing states receive 13% of Federation Account oil revenue generated from their territory, in addition to their normal RMAFC formula share. This is enshrined in Section 162(2) of the 1999 Constitution and is a core element of Nigeria\'s fiscal federalism.' },
+  'exp-3-0':{ correct:'C', text:'<strong>C is correct.</strong> Section 80 of the 1999 Constitution specifies that money may only be withdrawn from the CRF in two main ways: (1) to meet <strong>statutory expenditure</strong> (first charges) or (2) where <strong>authorised by an Appropriation Act</strong> or Supplementary Appropriation Act. A verbal presidential instruction or unilateral AGF approval is constitutionally insufficient.' },
+  'exp-3-1':{ correct:'B', text:'<strong>B is correct.</strong> The <strong>Contingency Fund</strong> under Section 83 of the 1999 Constitution exists specifically to meet <strong>urgent or unforeseen expenditure</strong> for which no provision has been made in the Appropriation Act. Any withdrawals must be replenished from supplementary appropriations passed by the National Assembly.' },
+  'exp-4-0':{ correct:'C', text:'<strong>C is correct.</strong> The Auditor-General for the Federation (AuGF) is constitutionally mandated to submit audit reports to the <strong>National Assembly</strong> (through the Public Accounts Committee). The AuGF is deliberately independent of the Executive (President, Minister of Finance, AGF) to ensure objective examination of how the Executive has used public funds.' },
+  'exp-4-1':{ correct:'B', text:'<strong>B is correct.</strong> The <strong>Vote Book</strong> (Expenditure Ledger) is the primary book of account used to track the amount appropriated (by budget), the warrant released, the amounts committed and spent, and the <strong>remaining unspent balance</strong> for each expenditure vote head. It is the key budgetary control tool preventing MDAs from overspending their approved allocations.' },
+  'exp-5-0':{ correct:'C', text:'<strong>C is correct.</strong> The <strong>Statement of Comparison of Budget and Actual Amounts</strong>, required under IPSAS 24, is unique to government financial reporting. It directly compares the original budget, the final budget (after virements/supplementary estimates), and actual expenditure — showing variance and explanations. IFRS has no equivalent requirement for private sector entities.' },
+  'exp-5-1':{ correct:'B', text:'<strong>B is correct.</strong> When a government entity\'s expenses exceed its revenues, the result is a <strong>deficit for the period</strong> — equivalent to a "loss" in private sector terminology but using public sector language under IPSAS. A surplus arises when revenues exceed expenses. Governments do not use the terms "profit" or "loss."' },
+  'exp-6-0':{ correct:'C', text:'<strong>C is correct.</strong> <strong>Open Competitive Bidding (OCB)</strong> is the default and preferred procurement method under the PPA 2007. It requires public advertisement of the procurement opportunity, inviting all qualified suppliers to bid, ensuring the widest competition, maximum transparency, and best value for government money.' },
+  'exp-6-1':{ correct:'B', text:'<strong>B is correct.</strong> The <strong>Bureau of Public Procurement (BPP)</strong> issues the "Certificate of No Objection" that must be obtained before any federal contract above the threshold (typically above ₦100m for goods, above ₦500m for works) can be awarded. This is a key oversight tool to prevent contract inflation and kickbacks.' },
+  'exp-7-0':{ correct:'B', text:'<strong>B is correct.</strong> The AuGF\'s independence is constitutionally guaranteed through the tenure protection provision — removal requires the support of <strong>at least 2/3 of the Senate</strong>, not a simple presidential decision. This makes it very difficult for the Executive to remove an AuGF who produces unfavourable audit findings.' },
+  'exp-7-1':{ correct:'C', text:'<strong>C is correct.</strong> In the 3Es framework of VFM audit, <strong>Effectiveness</strong> is the highest level — it asks whether the outputs produced actually achieved the <strong>intended policy outcomes</strong>. For example: schools were built (output), but did children actually learn better (outcome)? Economy is about cost, efficiency is about input-output conversion.' },
+  'exp-8-0':{ correct:'B', text:'<strong>B is correct.</strong> Section 27 of the Fiscal Responsibility Act 2007 is explicit: government borrowings (both domestic and external) must be used <strong>only for capital expenditure</strong> — investment in assets that will generate future returns. Using borrowed funds to pay salaries or other recurrent costs is prohibited under the FRA as it creates debt without corresponding productive assets.' },
+  'exp-8-1':{ correct:'B', text:'<strong>B is correct.</strong> Section 21 of the Fiscal Responsibility Act 2007 requires that when oil revenues exceed the benchmark price, the surplus must be <strong>saved in the Fiscal Savings Fund</strong> (Excess Crude Account). This acts as a fiscal buffer — savings built up during oil booms cushion the budget when oil prices fall below the benchmark.' },
+  'exp-9-0':{ correct:'C', text:'<strong>C is correct.</strong> The <strong>Debt Management Office (DMO)</strong>, established under the DMO Act 2003, is the dedicated government agency responsible for issuing and managing FGN Bonds, Treasury Bills, Sukuk, and other domestic debt instruments on behalf of the Federal Government. The CBN acts as the settlement agent but the DMO is the primary issuer and manager.' },
+  'exp-9-1':{ correct:'B', text:'<strong>B is correct.</strong> Nigeria\'s most pressing debt sustainability concern is its extremely high <strong>debt service-to-revenue ratio</strong> — in recent years this exceeded 80%, meaning over 80 kobo of every naira of government revenue went to paying debt service (interest and principal), leaving less than 20 kobo for education, health, infrastructure and all other public services.' },
+  'exp-9-2':{ correct:'C', text:'<strong>C is correct.</strong> Section 41 of the Fiscal Responsibility Act 2007 requires that the FGN\'s external borrowing plan must be approved by the <strong>National Assembly</strong>. This is a critical legislative oversight mechanism — the Executive cannot unilaterally take on foreign loans that will burden future generations without parliamentary scrutiny and approval.' },
+};
+
+const quizResults = {};
+
+function answer(optEl, result, qId, expId) {
+  const block = document.getElementById(qId);
+  if (block.classList.contains('answered')) return;
+  const opts = block.querySelectorAll('.option');
+  const expEl = document.getElementById(expId);
+  const data = explanations[expId];
+  opts.forEach(o => o.classList.add('locked'));
+  block.classList.add('answered');
+  if (result === 'correct') {
+    optEl.classList.add('correct');
+    expEl.className = 'explanation show';
+    expEl.innerHTML = '✅ ' + data.text;
+  } else {
+    optEl.classList.add('wrong');
+    opts.forEach(o => { if (o.querySelector('.opt-letter').textContent === data.correct) o.classList.add('reveal-correct'); });
+    expEl.className = 'explanation wrong-exp show';
+    expEl.innerHTML = '❌ Not quite. ' + data.text;
+  }
+  quizResults[qId] = result;
+  updateScore(qId);
+}
+
+function updateScore(qId) {
+  const quizNum = qId.split('-')[1];
+  const scoreEl = document.getElementById('score-' + quizNum);
+  const allQ = document.querySelectorAll('[id^="q-' + quizNum + '-"]');
+  let answered = 0, correct = 0;
+  allQ.forEach(q => { if (q.classList.contains('answered')) { answered++; if (quizResults[q.id] === 'correct') correct++; } });
+  if (answered === allQ.length) {
+    const pct = Math.round((correct/allQ.length)*100);
+    scoreEl.className = 'quiz-score show ' + (pct>=80?'great':pct>=50?'ok':'low');
+    scoreEl.textContent = (pct>=80?'🎉 Excellent! ':pct>=50?'👍 Good effort. ':'📚 Review this topic. ') + correct + '/' + allQ.length + ' correct (' + pct + '%)';
+  }
+}
+
+let currentTopic = 0;
+const TOTAL = 10;
+
+function goTo(idx) {
+  if (idx < 0 || idx >= TOTAL) return;
+  document.getElementById('topic-' + currentTopic).classList.remove('active');
+  document.getElementById('completeBanner').classList.remove('show');
+  currentTopic = idx;
+  document.getElementById('topic-' + idx).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach((n,i) => n.classList.toggle('active', i===idx));
+  const pct = Math.round(((idx+1)/TOTAL)*100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = 'Topic ' + (idx+1) + ' of ' + TOTAL;
+  document.getElementById('progressPct').textContent = pct + '%';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showComplete() {
+  document.getElementById('topic-' + currentTopic).classList.remove('active');
+  document.getElementById('completeBanner').classList.add('show');
+  document.getElementById('progressFill').style.width = '100%';
+  document.getElementById('progressPct').textContent = '100%';
+  document.getElementById('progressLabel').textContent = 'Complete!';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

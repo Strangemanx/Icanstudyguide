@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ICAN Skills Level — Study Hub</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap');
+
+  :root {
+    --ink: #0f1117;
+    --paper: #f7f5ef;
+    --cream: #edeae0;
+    --border: #dcd7ca;
+    --mid: #666;
+    --radius: 14px;
+
+    /* subject colours */
+    --fr:   #4a1a6e;
+    --pm:   #0d5c63;
+    --fm:   #1a3a6e;
+    --tax:  #1f5c3a;
+    --psaf: #1a2f5c;
+
+    --fr-light:   #ecdff5;
+    --pm-light:   #d0eaec;
+    --fm-light:   #dde8fb;
+    --tax-light:  #d9eee0;
+    --psaf-light: #d8e2f5;
+
+    --gold: #c8922a;
+    --gold-light: #f5dfa0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(145deg, #0d1a36 0%, #1a2f5c 50%, #0d1a36 100%);
+    padding: 60px 24px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      -55deg, transparent, transparent 30px,
+      rgba(255,255,255,0.02) 30px, rgba(255,255,255,0.02) 60px
+    );
+  }
+  .hero-eyebrow {
+    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold-light); font-weight: 700; margin-bottom: 16px;
+    position: relative;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 6vw, 60px);
+    color: #fff; line-height: 1.1; margin-bottom: 16px;
+    position: relative;
+  }
+  .hero h1 span { color: var(--gold-light); }
+  .hero p {
+    color: rgba(255,255,255,0.65); font-size: 16px;
+    max-width: 500px; margin: 0 auto 28px;
+    position: relative;
+  }
+  .hero-badges {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 10px; position: relative;
+  }
+  .hero-badge {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.8);
+    font-size: 12px; font-weight: 600;
+    padding: 5px 14px; border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── WAVE ── */
+  .wave {
+    display: block; width: 100%; height: 48px;
+    background: var(--paper);
+    clip-path: ellipse(55% 100% at 50% 100%);
+    margin-top: -2px;
+  }
+
+  /* ── INTRO ── */
+  .intro {
+    max-width: 680px; margin: 0 auto;
+    padding: 40px 24px 0;
+    text-align: center;
+  }
+  .intro h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(20px, 3vw, 26px);
+    color: var(--ink); margin-bottom: 10px;
+  }
+  .intro p { color: var(--mid); font-size: 15px; line-height: 1.7; }
+
+  /* ── GRID ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    max-width: 1000px;
+    margin: 40px auto 0;
+    padding: 0 24px;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: flex; flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.10);
+  }
+  .card-header {
+    padding: 28px 24px 20px;
+    position: relative;
+  }
+  .card-code {
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    font-weight: 700; opacity: 0.7; margin-bottom: 8px;
+  }
+  .card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px; line-height: 1.2;
+    color: #fff; margin-bottom: 4px;
+  }
+  .card-sub {
+    font-size: 12px; color: rgba(255,255,255,0.65);
+    font-weight: 500;
+  }
+  .card-icon {
+    position: absolute; top: 20px; right: 20px;
+    font-size: 36px; opacity: 0.25;
+  }
+  .card-body {
+    padding: 20px 24px;
+    flex: 1;
+  }
+  .card-topics {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .card-topics li {
+    font-size: 13px; color: var(--mid);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .card-topics li::before {
+    content: '';
+    width: 6px; height: 6px; border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .card-footer {
+    padding: 16px 24px;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .card-count {
+    font-size: 12px; color: var(--mid); font-weight: 500;
+  }
+  .card-btn {
+    font-size: 13px; font-weight: 700;
+    padding: 8px 18px; border-radius: 8px;
+    border: none; cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: opacity 0.15s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .card-btn:hover { opacity: 0.85; }
+
+  /* subject colour assignments */
+  .card-fr .card-header { background: var(--fr); }
+  .card-fr .card-topics li::before { background: var(--fr); }
+  .card-fr .card-btn { background: var(--fr); color: #fff; }
+
+  .card-pm .card-header { background: var(--pm); }
+  .card-pm .card-topics li::before { background: var(--pm); }
+  .card-pm .card-btn { background: var(--pm); color: #fff; }
+
+  .card-fm .card-header { background: var(--fm); }
+  .card-fm .card-topics li::before { background: var(--fm); }
+  .card-fm .card-btn { background: var(--fm); color: #fff; }
+
+  .card-tax .card-header { background: var(--tax); }
+  .card-tax .card-topics li::before { background: var(--tax); }
+  .card-tax .card-btn { background: var(--tax); color: #fff; }
+
+  .card-psaf .card-header { background: var(--psaf); }
+  .card-psaf .card-topics li::before { background: var(--psaf); }
+  .card-psaf .card-btn { background: var(--psaf); color: #fff; }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    max-width: 1000px; margin: 40px auto 0;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+  }
+  .stat {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 20px;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px; color: var(--ink); line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label { font-size: 12px; color: var(--mid); font-weight: 500; }
+
+  /* ── HOW IT WORKS ── */
+  .how {
+    max-width: 680px; margin: 52px auto 0;
+    padding: 0 24px;
+  }
+  .how h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px; margin-bottom: 20px; text-align: center;
+  }
+  .how-steps {
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .how-step {
+    display: flex; gap: 16px; align-items: flex-start;
+    background: #fff; border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 16px 18px;
+  }
+  .step-num {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--ink); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700; flex-shrink: 0;
+  }
+  .step-text strong { display: block; font-size: 14px; margin-bottom: 2px; }
+  .step-text span { font-size: 13px; color: var(--mid); }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center; padding: 48px 24px;
+    color: var(--mid); font-size: 13px; margin-top: 48px;
+    border-top: 1px solid var(--border);
+  }
+  footer strong { color: var(--ink); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">ICAN Professional Examinations</div>
+  <h1>Skills Level<br/><span>Study Hub</span></h1>
+  <p>Five complete interactive guides — one for every Skills Level subject. Built from real past questions.</p>
+  <div class="hero-badges">
+    <span class="hero-badge">10 Topics per Subject</span>
+    <span class="hero-badge">Interactive Quizzes</span>
+    <span class="hero-badge">Past Question Integration</span>
+    <span class="hero-badge">Instant Explanations</span>
+  </div>
+</div>
+<div class="wave"></div>
+
+<!-- INTRO -->
+<div class="intro">
+  <h2>Choose Your Subject</h2>
+  <p>Each guide teaches the full syllabus topic by topic, then tests you with real past exam questions. Wrong answers auto-reveal the correct answer with a full explanation so you understand — not just memorise.</p>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-num">5</div>
+    <div class="stat-label">Subjects Covered</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">50</div>
+    <div class="stat-label">Topics Taught</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">130+</div>
+    <div class="stat-label">Quiz Questions</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">2025</div>
+    <div class="stat-label">Past Questions Used</div>
+  </div>
+</div>
+
+<!-- SUBJECT CARDS -->
+<div class="grid">
+
+  <!-- Financial Reporting -->
+  <a class="card card-fr" href="ICAN_FR_Study_Guide.html">
+    <div class="card-header">
+      <div class="card-code">B1 — Financial Reporting</div>
+      <div class="card-title">Financial Reporting</div>
+      <div class="card-sub">IFRS Standards · Group Accounts · Sustainability</div>
+      <div class="card-icon">📋</div>
+    </div>
+    <div class="card-body">
+      <ul class="card-topics">
+        <li>Conceptual Framework & IAS 8</li>
+        <li>IAS 16 PPE & IAS 40 Investment Property</li>
+        <li>IAS 12 Deferred Tax & IAS 33 EPS</li>
+        <li>IFRS 5 Discontinued Operations</li>
+        <li>IFRS 15 Revenue & IAS 37 Provisions</li>
+        <li>Group Consolidation (IFRS 3 & IFRS 10)</li>
+        <li>Sustainability Reporting & ISSB</li>
+      </ul>
+    </div>
+    <div class="card-footer">
+      <span class="card-count">10 topics · 26 questions</span>
+      <span class="card-btn">Open Guide →</span>
+    </div>
+  </a>
+
+  <!-- Performance Management -->
+  <a class="card card-pm" href="ICAN_PM_Study_Guide.html">
+    <div class="card-header">
+      <div class="card-code">B4 — Performance Management</div>
+      <div class="card-title">Performance Management</div>
+      <div class="card-sub">Relevant Costing · LP · Variances · Throughput</div>
+      <div class="card-icon">📊</div>
+    </div>
+    <div class="card-body">
+      <ul class="card-topics">
+        <li>Cost Behaviour & High-Low Method</li>
+        <li>Relevant Costing (May 2025 Q1)</li>
+        <li>CVP Analysis & Multi-product BEP</li>
+        <li>Limiting Factor Analysis</li>
+        <li>Linear Programming & Shadow Price</li>
+        <li>Flexible Budgets & Variance Analysis</li>
+        <li>Sales Mix & Quantity Variances</li>
+        <li>ABC Costing & Throughput Accounting</li>
+      </ul>
+    </div>
+    <div class="card-footer">
+      <span class="card-count">10 topics · 24 questions</span>
+      <span class="card-btn">Open Guide →</span>
+    </div>
+  </a>
+
+  <!-- Financial Management -->
+  <a class="card card-fm" href="ICAN_FM_Study_Guide.html">
+    <div class="card-header">
+      <div class="card-code">B5 — Financial Management</div>
+      <div class="card-title">Financial Management</div>
+      <div class="card-sub">NPV · WACC · Capital Structure · Valuation</div>
+      <div class="card-icon">💰</div>
+    </div>
+    <div class="card-body">
+      <ul class="card-topics">
+        <li>Time Value of Money & Fisher Effect</li>
+        <li>Capital Budgeting — NPV, IRR, Payback</li>
+        <li>Cost of Capital — CAPM & DGM</li>
+        <li>WACC & Capital Structure (M&M)</li>
+        <li>Working Capital — COC, EOQ, Cash Models</li>
+        <li>Dividend Policy — 5 Theories</li>
+        <li>Risk & Return — Beta, Portfolio Theory</li>
+        <li>Business Valuation — P/E, DVM, DCF</li>
+      </ul>
+    </div>
+    <div class="card-footer">
+      <span class="card-count">10 topics · 28 questions</span>
+      <span class="card-btn">Open Guide →</span>
+    </div>
+  </a>
+
+  <!-- Taxation -->
+  <a class="card card-tax" href="ICAN_Tax_Study_Guide.html">
+    <div class="card-header">
+      <div class="card-code">B3 — Taxation</div>
+      <div class="card-title">Taxation</div>
+      <div class="card-sub">PIT · CIT · VAT · Islamic Finance Tax</div>
+      <div class="card-icon">🧾</div>
+    </div>
+    <div class="card-body">
+      <ul class="card-topics">
+        <li>Personal Income Tax — Sole Traders</li>
+        <li>Companies Income Tax & CIT Rates</li>
+        <li>Capital Allowances & Balancing Charges</li>
+        <li>Thin Capitalisation — Section 24 CITA</li>
+        <li>VAT — Computation & Registration</li>
+        <li>Withholding Tax Mechanism</li>
+        <li>Non-Interest (Islamic) Finance Tax</li>
+        <li>FIRS Powers & Tax Administration</li>
+      </ul>
+    </div>
+    <div class="card-footer">
+      <span class="card-count">10 topics · 26 questions</span>
+      <span class="card-btn">Open Guide →</span>
+    </div>
+  </a>
+
+  <!-- PSAF -->
+  <a class="card card-psaf" href="ICAN_PSAF_Study_Guide.html">
+    <div class="card-header">
+      <div class="card-code">B6 — Public Sector Accounting & Finance</div>
+      <div class="card-title">Public Sector Accounting</div>
+      <div class="card-sub">IPSAS · Budgeting · Procurement · Debt</div>
+      <div class="card-icon">🏛️</div>
+    </div>
+    <div class="card-body">
+      <ul class="card-topics">
+        <li>IPSAS Framework vs IFRS</li>
+        <li>Government Budgeting & MTEF</li>
+        <li>Revenue & Expenditure Classification</li>
+        <li>Consolidated Revenue Fund & Funds</li>
+        <li>Public Accounts — Officers & Records</li>
+        <li>Government Financial Statements</li>
+        <li>Public Procurement — PPA 2007</li>
+        <li>Fiscal Responsibility Act & Public Debt</li>
+      </ul>
+    </div>
+    <div class="card-footer">
+      <span class="card-count">10 topics · 27 questions</span>
+      <span class="card-btn">Open Guide →</span>
+    </div>
+  </a>
+
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="how">
+  <h2>How Each Guide Works</h2>
+  <div class="how-steps">
+    <div class="how-step">
+      <div class="step-num">1</div>
+      <div class="step-text">
+        <strong>Read the Teaching</strong>
+        <span>Each topic opens with clear teaching — concepts explained, formulae shown, real exam examples worked through with the actual past question figures.</span>
+      </div>
+    </div>
+    <div class="how-step">
+      <div class="step-num">2</div>
+      <div class="step-text">
+        <strong>Answer the Checkpoint Quiz</strong>
+        <span>After each topic, past-question-style MCQs test your understanding. Questions are tagged with the actual diet they came from — May 2025, Nov 2025.</span>
+      </div>
+    </div>
+    <div class="how-step">
+      <div class="step-num">3</div>
+      <div class="step-text">
+        <strong>Learn From Every Answer</strong>
+        <span>Right answer → green confirmation with explanation. Wrong answer → your choice turns red, the correct answer is revealed in green, and a full explanation drops in below.</span>
+      </div>
+    </div>
+    <div class="how-step">
+      <div class="step-num">4</div>
+      <div class="step-text">
+        <strong>Track Your Progress</strong>
+        <span>A progress bar at the top of each guide shows how far you've gone. Each quiz scores you automatically and tells you whether to move on or revisit.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p><strong>ICAN Skills Level Study Hub</strong></p>
+  <p style="margin-top:6px;">Built from November 2025 & May 2025 past questions · All 5 Skills Level subjects · MyEzer Services</p>
+</footer>
+
+</body>
+</html>
