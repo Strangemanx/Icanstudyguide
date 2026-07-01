@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ICAN Skills – Performance Management Study Guide</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --ink: #0f1117;
+    --paper: #f8f6f0;
+    --cream: #edeae2;
+    --teal: #0d5c63;
+    --teal-light: #d0eaec;
+    --gold: #b87333;
+    --gold-light: #f5ddb0;
+    --green: #1a5c35;
+    --green-light: #d2edde;
+    --red: #a12020;
+    --red-light: #fde8e8;
+    --mid: #666;
+    --border: #dbd6cc;
+    --radius: 10px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.75; font-size: 16px; }
+
+  /* HEADER */
+  header {
+    background: linear-gradient(135deg, #0d5c63 0%, #083d42 100%);
+    color: #fff;
+    padding: 44px 24px 36px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0; right: 0;
+    height: 30px;
+    background: var(--paper);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+  .eyebrow { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 10px; }
+  header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(26px, 5vw, 46px); color: #fff; line-height: 1.15; margin-bottom: 10px; }
+  header p { color: rgba(255,255,255,0.7); font-size: 15px; max-width: 540px; margin: 0 auto; }
+  .badge { display: inline-block; background: var(--gold); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 14px; border-radius: 20px; margin-top: 14px; }
+
+  /* NAV */
+  nav { background: #083d42; padding: 0 16px; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; position: sticky; top: 0; z-index: 100; }
+  nav::-webkit-scrollbar { display: none; }
+  .nav-item { flex-shrink: 0; color: rgba(255,255,255,0.55); font-size: 12.5px; font-weight: 500; padding: 13px 14px; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; white-space: nowrap; }
+  .nav-item:hover { color: #fff; }
+  .nav-item.active { color: var(--gold-light); border-bottom-color: var(--gold); }
+
+  /* PROGRESS */
+  .progress-bar-wrap { background: var(--cream); border-bottom: 1px solid var(--border); padding: 10px 24px; display: flex; align-items: center; gap: 14px; font-size: 13px; color: var(--mid); }
+  .progress-track { flex: 1; height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--teal), var(--gold)); border-radius: 99px; transition: width 0.5s ease; width: 0%; }
+
+  /* LAYOUT */
+  .container { max-width: 820px; margin: 0 auto; padding: 40px 24px 80px; }
+  .topic-section { display: none; }
+  .topic-section.active { display: block; animation: fadeIn 0.3s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* SECTION HEADER */
+  .section-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--teal); font-weight: 700; margin-bottom: 6px; }
+  .section-title { font-family: 'DM Serif Display', serif; font-size: clamp(22px, 4vw, 32px); color: var(--teal); line-height: 1.2; margin-bottom: 6px; }
+  .section-desc { color: var(--mid); font-size: 14px; margin-bottom: 32px; border-left: 3px solid var(--teal); padding-left: 14px; }
+
+  /* TEACH BLOCKS */
+  .teach-block { margin-bottom: 36px; }
+  .teach-block h3 { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--teal); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+  .teach-block h3 .num { background: var(--teal); color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+  .teach-block p { margin-bottom: 12px; color: #2a2a2a; }
+  .teach-block ul, .teach-block ol { padding-left: 22px; margin-bottom: 12px; color: #2a2a2a; }
+  .teach-block li { margin-bottom: 6px; }
+
+  /* FORMULA */
+  .formula { background: var(--teal); color: #fff; border-radius: var(--radius); padding: 16px 20px; font-family: 'JetBrains Mono', monospace; font-size: 13.5px; margin: 16px 0; line-height: 1.9; }
+  .formula .label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-light); font-family: 'Inter', sans-serif; font-weight: 600; margin-bottom: 6px; }
+
+  /* KEY / WARN BOXES */
+  .key-box { background: var(--teal-light); border-left: 4px solid var(--teal); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 16px 0; font-size: 14.5px; }
+  .key-box strong { color: var(--teal); }
+  .warn-box { background: #fff8e1; border-left: 4px solid var(--gold); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 16px 0; font-size: 14px; }
+  .warn-box strong { color: var(--gold); }
+  .exam-box { background: #fff3cd; border: 1.5px solid var(--gold); border-radius: var(--radius); padding: 14px 18px; margin: 16px 0; font-size: 14px; }
+  .exam-box .exam-tag { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; color: var(--gold); }
+
+  /* TABLES */
+  .styled-table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 16px 0; border-radius: var(--radius); overflow: hidden; }
+  .styled-table th { background: var(--teal); color: #fff; text-align: left; padding: 10px 14px; font-weight: 600; }
+  .styled-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+  .styled-table tr:nth-child(even) td { background: var(--cream); }
+
+  .divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+  /* QUIZ ZONE */
+  .quiz-zone { background: var(--cream); border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin: 32px 0; }
+  .quiz-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+  .quiz-badge { background: var(--teal); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; }
+  .quiz-header h4 { font-size: 14px; font-weight: 600; color: var(--mid); }
+
+  .question-block { background: #fff; border-radius: var(--radius); padding: 20px; margin-bottom: 16px; border: 1px solid var(--border); }
+  .question-block.answered { border-color: transparent; }
+  .q-text { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 6px; line-height: 1.5; }
+  .q-source { font-size: 11px; color: var(--mid); margin-bottom: 14px; font-style: italic; }
+  .options { display: flex; flex-direction: column; gap: 8px; }
+  .option { display: flex; align-items: flex-start; gap: 10px; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 8px; cursor: pointer; font-size: 14px; transition: all 0.15s; background: var(--paper); user-select: none; }
+  .option:hover:not(.locked) { border-color: var(--teal); background: var(--teal-light); }
+  .opt-letter { width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 1px; transition: all 0.15s; }
+  .option.correct { background: var(--green-light); border-color: var(--green); }
+  .option.correct .opt-letter { background: var(--green); border-color: var(--green); color: #fff; }
+  .option.wrong { background: var(--red-light); border-color: var(--red); }
+  .option.wrong .opt-letter { background: var(--red); border-color: var(--red); color: #fff; }
+  .option.locked { cursor: default; }
+  .option.reveal-correct { background: var(--green-light); border-color: var(--green); }
+  .option.reveal-correct .opt-letter { background: var(--green); border-color: var(--green); color: #fff; }
+
+  .explanation { display: none; margin-top: 14px; border-left: 3px solid var(--green); border-radius: 0 8px 8px 0; padding: 12px 16px; font-size: 14px; color: #1a4028; line-height: 1.6; animation: fadeIn 0.25s ease; background: #fff; }
+  .explanation.show { display: block; }
+  .explanation.wrong-exp { border-left-color: var(--gold); color: #5a3800; background: #fff8e1; }
+  .explanation strong { font-weight: 700; }
+
+  .quiz-score { display: none; text-align: center; padding: 16px; border-radius: var(--radius); font-size: 15px; font-weight: 600; margin-top: 8px; }
+  .quiz-score.show { display: block; }
+  .quiz-score.great { background: var(--green-light); color: var(--green); }
+  .quiz-score.ok { background: var(--gold-light); color: #7a5500; }
+  .quiz-score.low { background: var(--red-light); color: var(--red); }
+
+  /* NAV BUTTONS */
+  .nav-buttons { display: flex; gap: 12px; justify-content: space-between; margin-top: 48px; flex-wrap: wrap; }
+  .btn { padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; border: none; transition: all 0.15s; font-family: 'Inter', sans-serif; }
+  .btn-primary { background: var(--teal); color: #fff; }
+  .btn-primary:hover { background: #083d42; }
+  .btn-secondary { background: var(--cream); color: var(--ink); border: 1.5px solid var(--border); }
+  .btn-secondary:hover { background: var(--border); }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .complete-banner { display: none; text-align: center; padding: 48px 24px; }
+  .complete-banner.show { display: block; animation: fadeIn 0.4s ease; }
+  .complete-banner h2 { font-family: 'DM Serif Display', serif; font-size: 36px; color: var(--teal); margin-bottom: 12px; }
+  .complete-banner p { color: var(--mid); margin-bottom: 24px; }
+  .trophy { font-size: 64px; margin-bottom: 16px; }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+  .home-btn {
+    display:inline-flex; align-items:center; gap:6px;
+    background:rgba(255,255,255,0.15); color:rgba(255,255,255,0.9);
+    border:1px solid rgba(255,255,255,0.3); border-radius:8px;
+    font-size:13px; font-weight:600; padding:7px 16px;
+    text-decoration:none; margin-bottom:20px;
+    transition:background 0.15s;
+    position:relative; z-index:1;
+  }
+  .home-btn:hover { background:rgba(255,255,255,0.25); }
+  .home-btn-bottom {
+    display:inline-block; margin-top:16px;
+    background:#fff; border:2px solid currentColor;
+    border-radius:8px; font-size:14px; font-weight:700;
+    padding:10px 24px; text-decoration:none;
+    transition:opacity 0.15s;
+  }
+  .home-btn-bottom:hover { opacity:0.8; }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="home-btn">← Back to Study Hub</a>
+  <div class="eyebrow">ICAN Skills Level · B4</div>
+  <h1>Performance Management</h1>
+  <p>Topic-by-topic teaching built from the actual ICAN PM syllabus and past questions from May & November 2025 diets.</p>
+  <div class="badge">Interactive Study Guide</div>
+</header>
+
+<nav id="mainNav">
+  <div class="nav-item active" onclick="goTo(0)">1. PM Overview</div>
+  <div class="nav-item" onclick="goTo(1)">2. Relevant Costing</div>
+  <div class="nav-item" onclick="goTo(2)">3. CVP Analysis</div>
+  <div class="nav-item" onclick="goTo(3)">4. Limiting Factor</div>
+  <div class="nav-item" onclick="goTo(4)">5. Linear Programming</div>
+  <div class="nav-item" onclick="goTo(5)">6. Budgeting & Variances</div>
+  <div class="nav-item" onclick="goTo(6)">7. Sales Variances</div>
+  <div class="nav-item" onclick="goTo(7)">8. ABC Costing</div>
+  <div class="nav-item" onclick="goTo(8)">9. ROI & Residual Income</div>
+  <div class="nav-item" onclick="goTo(9)">10. Throughput Accounting</div>
+</nav>
+
+<div class="progress-bar-wrap">
+  <span id="progressLabel">Topic 1 of 10</span>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <span id="progressPct">0%</span>
+</div>
+
+<div class="container">
+
+<!-- ══════════════════════════════════════════ -->
+<!-- TOPIC 1: PM Overview -->
+<!-- ══════════════════════════════════════════ -->
+<section class="topic-section active" id="topic-0">
+  <div class="section-label">Topic 01</div>
+  <h2 class="section-title">Introduction to Performance Management</h2>
+  <p class="section-desc">What PM is about, how costs behave, and the key decision-making framework that runs through every topic.</p>
+
+  <div class="teach-block">
+    <h3><span class="num">1</span> What is Performance Management?</h3>
+    <p>Performance Management is about providing information to managers to help them <strong>plan, control, and make decisions</strong> within an organisation. It sits at the intersection of management accounting and strategy.</p>
+    <p>The key questions PM answers:</p>
+    <ul>
+      <li><strong>Planning:</strong> What should we produce? At what cost?</li>
+      <li><strong>Control:</strong> Are we achieving our targets? Where are variances coming from?</li>
+      <li><strong>Decision-making:</strong> Should we accept this order? Which product is most profitable?</li>
+    </ul>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">2</span> Cost Classification — The Foundation</h3>
+    <table class="styled-table">
+      <tr><th>Cost Type</th><th>Behaviour</th><th>Example</th></tr>
+      <tr><td>Variable Cost</td><td>Changes proportionally with activity</td><td>Direct materials, direct labour</td></tr>
+      <tr><td>Fixed Cost</td><td>Unchanged within a relevant range</td><td>Rent, insurance</td></tr>
+      <tr><td>Semi-Variable (Mixed)</td><td>Fixed element + variable element</td><td>Power, telephone</td></tr>
+      <tr><td>Step Fixed</td><td>Fixed, but jumps at certain activity levels</td><td>Supervisors — one extra hired per 100k units</td></tr>
+    </table>
+    <div class="exam-box">
+      <div class="exam-tag">🎯 May 2025 — Q6 (Flexible Budgets)</div>
+      <p style="margin-top:8px;">The flexible budget question used a <strong>step cost</strong> for supervision — fixed up to 100,000 units, then an assistant supervisor added at N1,280,000 for higher levels. Always check if a cost is truly fixed or is a step function.</p>
+    </div>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">3</span> High-Low Method (Separating Fixed and Variable)</h3>
+    <div class="formula">
+      <div class="label">High-Low Method</div>
+Variable cost per unit = (Highest cost – Lowest cost) / (Highest activity – Lowest activity)
+
+Fixed cost = Total cost at either level – (Variable cost per unit × Activity level)
+
+Example (from May 2025 Q6):
+  Power at 160,000 units = ₦1,920,000
+  Power at  80,000 units = ₦1,440,000
+  Variable rate = (1,920,000 – 1,440,000) / (160,000 – 80,000)
+               = 480,000 / 80,000 = ₦6 per unit
+  Fixed = 1,440,000 – (6 × 80,000) = ₦960,000
+    </div>
+  </div>
+
+  <hr class="divider"/>
+  <div class="quiz-zone" id="quiz-0">
+    <div class="quiz-header"><span class="quiz-badge">Checkpoint Quiz</span><h4>PM Overview & Cost Behaviour</h4></div>
+
+    <div class="question-block" id="q-0-0">
+      <div class="q-text">A company's power costs are ₦1,440,000 at 80,000 units and ₦1,920,000 at 160,000 units. What is the fixed element of power cost?</div>
+      <div class="q-source">ICAN PM — May 2025 Q6 Style (Flexible Budgets / High-Low)</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-0-0','exp-0-0')"><span class="opt-letter">A</span>₦1,440,000</div>
+        <div class="option" onclick="answer(this,'correct','q-0-0','exp-0-0')"><span class="opt-letter">B</span>₦960,000</div>
+        <div class="option" onclick="answer(this,'wrong','q-0-0','exp-0-0')"><span class="opt-letter">C</span>₦480,000</div>
+        <div class="option" onclick="answer(this,'wrong','q-0-0','exp-0-0')"><span class="opt-letter">D</span>₦1,200,000</div>
+      </div>
+      <div class="explanation" id="exp-0-0"></div>
+    </div>
+
+    <div class="question-block" id="q-0-1">
+      <div class="q-text">Supervision costs ₦1,600,000 for up to 100,000 units and an additional ₦1,280,000 is incurred for output above that. This is best described as:</div>
+      <div class="q-source">ICAN PM — May 2025 Q6 (Step Cost Identification)</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-0-1','exp-0-1')"><span class="opt-letter">A</span>A variable cost</div>
+        <div class="option" onclick="answer(this,'wrong','q-0-1','exp-0-1')"><span class="opt-letter">B</span>A semi-variable cost</div>
+        <div class="option" onclick="answer(this,'correct','q-0-1','exp-0-1')"><span class="opt-letter">C</span>A step fixed cost</div>
+        <div class="option" onclick="answer(this,'wrong','q-0-1','exp-0-1')"><span class="opt-letter">D</span>A purely fixed cost</div>
+      </div>
+      <div class="explanation" id="exp-0-1"></div>
+    </div>
+    <div class="quiz-score" id="score-0"></div>
+  </div>
+  <div class="nav-buttons">
+    <button class="btn btn-secondary" disabled>← Previous</button>
+    <button class="btn btn-primary" onclick="goTo(1)">Next Topic →</button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- TOPIC 2: Relevant Costing -->
+<!-- ══════════════════════════════════════════ -->
+<section class="topic-section" id="topic-1">
+  <div class="section-label">Topic 02</div>
+  <h2 class="section-title">Relevant Costing</h2>
+  <p class="section-desc">The most important concept in PM decision-making. This was the compulsory Q1 in May 2025 — you must master it.</p>
+
+  <div class="teach-block">
+    <h3><span class="num">1</span> What Makes a Cost Relevant?</h3>
+    <p>A relevant cost is one that will be <strong>affected by a decision</strong>. To be relevant, a cost must be:</p>
+    <ul>
+      <li><strong>Future</strong> — not already spent</li>
+      <li><strong>Incremental</strong> — arises as a direct result of the decision</li>
+      <li><strong>Cash flow</strong> — not an accounting allocation</li>
+    </ul>
+    <div class="key-box"><strong>Irrelevant costs (always exclude):</strong> Sunk costs (already spent), absorbed/allocated overheads (not incremental), depreciation (non-cash), committed costs (will be paid regardless).</div>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">2</span> Relevant Cost of Materials</h3>
+    <table class="styled-table">
+      <tr><th>Situation</th><th>Relevant Cost</th></tr>
+      <tr><td>Must be bought in specifically</td><td>Current purchase price</td></tr>
+      <tr><td>In inventory, will be replaced</td><td>Current replacement cost</td></tr>
+      <tr><td>In inventory, has alternative use</td><td>Higher of: net realisable value OR opportunity cost of alternative use</td></tr>
+      <tr><td>In inventory, no other use</td><td>Net realisable value (scrap/resale price)</td></tr>
+    </table>
+    <div class="exam-box">
+      <div class="exam-tag">🎯 May 2025 Q1 — Material B</div>
+      <p style="margin-top:8px;">5,000 sq metres in inventory. No other use. Could be sold for ₦20/sqm. Current purchase price is ₦50/sqm. <strong>Relevant cost = ₦20 × 5,000 = ₦100,000</strong> (opportunity cost = selling price foregone). Original cost of ₦40/sqm (1,000,000/25,000) is a sunk cost — irrelevant.</p>
+    </div>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">3</span> Relevant Cost of Labour</h3>
+    <table class="styled-table">
+      <tr><th>Situation</th><th>Relevant Cost</th></tr>
+      <tr><td>Spare/idle capacity</td><td>Zero (labour is paid regardless)</td></tr>
+      <tr><td>Must be recruited externally</td><td>External recruitment rate</td></tr>
+      <tr><td>Transferred from another job requiring replacement</td><td>Replacement cost of substitute</td></tr>
+      <tr><td>Overtime required</td><td>Overtime premium only (if basic pay already committed)</td></tr>
+    </table>
+    <div class="exam-box">
+      <div class="exam-tag">🎯 May 2025 Q1 — Skilled Labour</div>
+      <p style="margin-top:8px;">External rate = ₦120/hr. Internal rate = ₦100/hr. Replacement cost for existing project = ₦110/hr. <strong>Relevant cost = ₦110/hr</strong> (the incremental cost of using existing workers is replacing them on their current project — the existing ₦100 salary is committed regardless).</p>
+    </div>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">4</span> Relevant Cost of Equipment / Machinery</h3>
+    <p>When a machine can be hired or purchased, compare the <strong>net relevant cost</strong> of each option:</p>
+    <div class="formula">
+      <div class="label">May 2025 Q1 — Machine Decision</div>
+Hire cost: ₦40,000 × 10 weeks = ₦400,000
+
+Buy option net cost:
+  Purchase price:        ₦2,500,000
+  Less: Residual value:  (₦1,500,000)
+  Net cost:              ₦1,000,000
+  Less: Rental income from hiring out:
+  ₦25,000 × 30 weeks =  (₦750,000)
+  Net relevant cost:     ₦250,000  ← CHEAPER → BUY
+
+Running cost of machine = ₦7,200 × 10 weeks = ₦72,000
+  (incurred by the user — always relevant)
+
+Depreciation = NOT relevant (non-cash, accounting entry)
+    </div>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">5</span> Why Financial Reports Will Differ from Relevant Cost Profit</h3>
+    <p>This was asked directly in May 2025 Q1(b). Key reasons:</p>
+    <ul>
+      <li>Financial accounts will charge <strong>depreciation</strong> (relevant costing ignores it — non-cash)</li>
+      <li>Financial accounts will absorb <strong>general overheads</strong> (relevant costing excludes non-incremental ones)</li>
+      <li>Financial accounts use <strong>FIFO/weighted average</strong> for materials, not opportunity cost</li>
+      <li>Labour is charged at <strong>standard rates</strong>, not at opportunity cost</li>
+    </ul>
+  </div>
+
+  <hr class="divider"/>
+  <div class="quiz-zone" id="quiz-1">
+    <div class="quiz-header"><span class="quiz-badge">Checkpoint Quiz</span><h4>Relevant Costing — May 2025 Q1 Style</h4></div>
+
+    <div class="question-block" id="q-1-0">
+      <div class="q-text">A company bought 5,000 sq metres of Material B two years ago at ₦40/sqm. It has no other use for the material. The current purchase price is ₦50/sqm and it can be sold for scrap at ₦20/sqm. What is the relevant cost of using this material?</div>
+      <div class="q-source">ICAN PM — May 2025 Q1 (Material B — Relevant Cost)</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-1-0','exp-1-0')"><span class="opt-letter">A</span>₦200,000 (original cost: ₦40 × 5,000)</div>
+        <div class="option" onclick="answer(this,'wrong','q-1-0','exp-1-0')"><span class="opt-letter">B</span>₦250,000 (replacement cost: ₦50 × 5,000)</div>
+        <div class="option" onclick="answer(this,'correct','q-1-0','exp-1-0')"><span class="opt-letter">C</span>₦100,000 (scrap value: ₦20 × 5,000)</div>
+        <div class="option" onclick="answer(this,'wrong','q-1-0','exp-1-0')"><span class="opt-letter">D</span>Zero — it is already paid for</div>
+      </div>
+      <div class="explanation" id="exp-1-0"></div>
+    </div>
+
+    <div class="question-block" id="q-1-1">
+      <div class="q-text">A supervisor works 2,000 hours/year for ₦500,000. He will work 300 overtime hours on a project (unpaid) and receive a ₦5,000 bonus only if the project proceeds. What is the relevant cost of his supervision?</div>
+      <div class="q-source">ICAN PM — May 2025 Q1 (Supervision — Relevant Cost)</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-1-1','exp-1-1')"><span class="opt-letter">A</span>₦500,000 (full annual salary)</div>
+        <div class="option" onclick="answer(this,'wrong','q-1-1','exp-1-1')"><span class="opt-letter">B</span>₦75,000 (300 hours at ₦500k/2,000hrs)</div>
+        <div class="option" onclick="answer(this,'correct','q-1-1','exp-1-1')"><span class="opt-letter">C</span>₦5,000 (the bonus only)</div>
+        <div class="option" onclick="answer(this,'wrong','q-1-1','exp-1-1')"><span class="opt-letter">D</span>₦80,000 (bonus + overtime premium)</div>
+      </div>
+      <div class="explanation" id="exp-1-1"></div>
+    </div>
+
+    <div class="question-block" id="q-1-2">
+      <div class="q-text">₦250,000 was spent last year analysing the resource requirements of a project. What is the relevant cost of this analysis for the project appraisal?</div>
+      <div class="q-source">ICAN PM — May 2025 Q1 (Sunk Cost)</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'correct','q-1-2','exp-1-2')"><span class="opt-letter">A</span>Zero — it is a sunk cost</div>
+        <div class="option" onclick="answer(this,'wrong','q-1-2','exp-1-2')"><span class="opt-letter">B</span>₦250,000 — it must be recovered</div>
+        <div class="option" onclick="answer(this,'wrong','q-1-2','exp-1-2')"><span class="opt-letter">C</span>₦250,000 depreciated over project life</div>
+        <div class="option" onclick="answer(this,'wrong','q-1-2','exp-1-2')"><span class="opt-letter">D</span>₦312,500 with 25% profit markup added</div>
+      </div>
+      <div class="explanation" id="exp-1-2"></div>
+    </div>
+
+    <div class="quiz-score" id="score-1"></div>
+  </div>
+  <div class="nav-buttons">
+    <button class="btn btn-secondary" onclick="goTo(0)">← Previous</button>
+    <button class="btn btn-primary" onclick="goTo(2)">Next Topic →</button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- TOPIC 3: CVP Analysis -->
+<!-- ══════════════════════════════════════════ -->
+<section class="topic-section" id="topic-2">
+  <div class="section-label">Topic 03</div>
+  <h2 class="section-title">Cost-Volume-Profit (CVP) Analysis</h2>
+  <p class="section-desc">Understand the relationship between cost, volume and profit — and how contribution drives every short-term decision.</p>
+
+  <div class="teach-block">
+    <h3><span class="num">1</span> Contribution — The Central Concept</h3>
+    <div class="formula">
+      <div class="label">Contribution</div>
+Contribution = Sales Revenue – Variable Costs
+
+Contribution per unit = Selling Price – Variable Cost per unit
+
+Contribution to Sales Ratio (C/S ratio) = Contribution / Revenue × 100%
+
+Example (May 2025 Q2 — Adebat Cleaning):
+  Complete wash: price ₦1,000, C/S ratio = 45% → contribution = ₦450/car
+  Mini wash:     price ₦500,  C/S ratio = 56% → contribution = ₦280/car
+    </div>
+    <div class="key-box"><strong>Why contribution matters:</strong> Fixed costs are irrelevant for most short-term decisions. Contribution is what's left to cover fixed costs and generate profit. Higher contribution per unit of scarce resource = better product to prioritise.</div>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">2</span> Break-Even Analysis</h3>
+    <div class="formula">
+      <div class="label">Break-Even Formulae</div>
+Break-Even Point (units) = Fixed Costs / Contribution per unit
+
+Break-Even Point (revenue) = Fixed Costs / C/S Ratio
+
+Margin of Safety (units) = Budgeted Sales – Break-Even Sales
+Margin of Safety (%) = Margin of Safety / Budgeted Sales × 100%
+
+Target Profit (units) = (Fixed Costs + Target Profit) / Contribution per unit
+    </div>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">3</span> Multi-Product Break-Even</h3>
+    <p>When a firm sells multiple products in a fixed sales mix, use the <strong>weighted average C/S ratio</strong>:</p>
+    <div class="formula">
+      <div class="label">Multi-Product Break-Even</div>
+Weighted Avg C/S ratio = Total Contribution / Total Revenue
+
+Break-Even Revenue = Total Fixed Costs / Weighted Avg C/S Ratio
+
+Then split by product in the budgeted mix ratio.
+    </div>
+    <div class="warn-box"><strong>⚠ Exam Trap:</strong> The break-even point changes if the product mix changes — even if total revenue stays the same. This links directly to the sales mix variance topic.</div>
+  </div>
+
+  <hr class="divider"/>
+  <div class="quiz-zone" id="quiz-2">
+    <div class="quiz-header"><span class="quiz-badge">Checkpoint Quiz</span><h4>CVP Analysis</h4></div>
+
+    <div class="question-block" id="q-2-0">
+      <div class="q-text">A company has fixed costs of ₦3,600,000 and sells one product at ₦800 with variable costs of ₦500. What is the break-even point in units?</div>
+      <div class="q-source">ICAN PM — Break-Even Analysis</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-2-0','exp-2-0')"><span class="opt-letter">A</span>4,500 units</div>
+        <div class="option" onclick="answer(this,'correct','q-2-0','exp-2-0')"><span class="opt-letter">B</span>12,000 units</div>
+        <div class="option" onclick="answer(this,'wrong','q-2-0','exp-2-0')"><span class="opt-letter">C</span>7,200 units</div>
+        <div class="option" onclick="answer(this,'wrong','q-2-0','exp-2-0')"><span class="opt-letter">D</span>18,000 units</div>
+      </div>
+      <div class="explanation" id="exp-2-0"></div>
+    </div>
+
+    <div class="question-block" id="q-2-1">
+      <div class="q-text">Adebat Cleaning has budgeted sales of 10,000 cars. Complete wash C/S = 45% (price ₦1,000), Mini wash C/S = 56% (price ₦500), mix is 60%/40%. Fixed costs = ₦1,200,000. What is the weighted average C/S ratio?</div>
+      <div class="q-source">ICAN PM — May 2025 Q2 Style (Multi-product C/S)</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-2-1','exp-2-1')"><span class="opt-letter">A</span>50.5%</div>
+        <div class="option" onclick="answer(this,'correct','q-2-1','exp-2-1')"><span class="opt-letter">B</span>46.5%</div>
+        <div class="option" onclick="answer(this,'wrong','q-2-1','exp-2-1')"><span class="opt-letter">C</span>56%</div>
+        <div class="option" onclick="answer(this,'wrong','q-2-1','exp-2-1')"><span class="opt-letter">D</span>45%</div>
+      </div>
+      <div class="explanation" id="exp-2-1"></div>
+    </div>
+
+    <div class="quiz-score" id="score-2"></div>
+  </div>
+  <div class="nav-buttons">
+    <button class="btn btn-secondary" onclick="goTo(1)">← Previous</button>
+    <button class="btn btn-primary" onclick="goTo(3)">Next Topic →</button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- TOPIC 4: Limiting Factor Analysis -->
+<!-- ══════════════════════════════════════════ -->
+<section class="topic-section" id="topic-3">
+  <div class="section-label">Topic 04</div>
+  <h2 class="section-title">Limiting Factor Analysis</h2>
+  <p class="section-desc">When a resource is scarce, rank products by contribution per unit of that scarce resource — not by total contribution.</p>
+
+  <div class="teach-block">
+    <h3><span class="num">1</span> Identifying the Limiting Factor</h3>
+    <p>A limiting factor (bottleneck) is a resource that constrains output. To identify it:</p>
+    <ol>
+      <li>Calculate the <strong>total resource required</strong> for maximum demand of each product</li>
+      <li>Compare to <strong>available resource</strong></li>
+      <li>The resource where demand exceeds supply is the limiting factor</li>
+    </ol>
+    <div class="exam-box">
+      <div class="exam-tag">🎯 May 2025 Q3 — Twins Nig. Ltd (LP Setup)</div>
+      <p style="margin-top:8px;">Four resources were given: Material X, Skilled labour, Unskilled labour, Machine hours. You must calculate total usage for maximum demand, then check which is binding. In that question, skilled labour and unskilled labour were the <strong>binding constraints</strong> (used in simultaneous equations).</p>
+    </div>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">2</span> Single Limiting Factor — Ranking</h3>
+    <div class="formula">
+      <div class="label">Ranking by Contribution per Unit of Scarce Resource</div>
+Step 1: Calculate contribution per unit for each product
+Step 2: Calculate how much of the scarce resource each unit uses
+Step 3: Contribution per unit of scarce resource = Contribution ÷ Resource per unit
+Step 4: Rank highest to lowest — produce in that order up to maximum demand
+
+Example (May 2025 Q3 — Grade A vs Grade B only):
+  Grade A: Contribution = ₦2,100 – ₦1,488 = ₦612; Skilled labour = 5 hrs
+           Contribution per skilled labour hour = ₦612 ÷ 5 = ₦122.40
+  Grade B: Contribution = ₦1,500 – ₦1,044 = ₦456; Skilled labour = 2 hrs
+           Contribution per skilled labour hour = ₦456 ÷ 2 = ₦228.00
+  Grade B RANKS FIRST when skilled labour is the limiting factor
+    </div>
+  </div>
+
+  <hr class="divider"/>
+  <div class="quiz-zone" id="quiz-3">
+    <div class="quiz-header"><span class="quiz-badge">Checkpoint Quiz</span><h4>Limiting Factor Analysis</h4></div>
+
+    <div class="question-block" id="q-3-0">
+      <div class="q-text">Product X gives contribution of ₦600 and uses 3 machine hours. Product Y gives contribution of ₦400 and uses 1 machine hour. Machine hours are limited. Which product should be prioritised?</div>
+      <div class="q-source">ICAN PM — Limiting Factor / Contribution per Scarce Resource</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-3-0','exp-3-0')"><span class="opt-letter">A</span>Product X — higher contribution per unit</div>
+        <div class="option" onclick="answer(this,'correct','q-3-0','exp-3-0')"><span class="opt-letter">B</span>Product Y — contribution per machine hour = ₦400 vs ₦200</div>
+        <div class="option" onclick="answer(this,'wrong','q-3-0','exp-3-0')"><span class="opt-letter">C</span>Both are equally profitable</div>
+        <div class="option" onclick="answer(this,'wrong','q-3-0','exp-3-0')"><span class="opt-letter">D</span>Product X — it generates more total revenue</div>
+      </div>
+      <div class="explanation" id="exp-3-0"></div>
+    </div>
+
+    <div class="question-block" id="q-3-1">
+      <div class="q-text">Grade B varnish (May 2025 Q3) uses 2 skilled labour hours per unit and earns ₦456 contribution. Skilled labour hours are limited to 4,800. Grade A uses 5 skilled labour hours and earns ₦612 contribution. If only one product can be made, how many units of Grade B should be produced to maximise contribution?</div>
+      <div class="q-source">ICAN PM — May 2025 Q3c (Single Product Decision)</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-3-1','exp-3-1')"><span class="opt-letter">A</span>960 units of Grade A</div>
+        <div class="option" onclick="answer(this,'correct','q-3-1','exp-3-1')"><span class="opt-letter">B</span>2,400 units of Grade B</div>
+        <div class="option" onclick="answer(this,'wrong','q-3-1','exp-3-1')"><span class="opt-letter">C</span>1,950 units of Grade B</div>
+        <div class="option" onclick="answer(this,'wrong','q-3-1','exp-3-1')"><span class="opt-letter">D</span>1,300 units of Grade A</div>
+      </div>
+      <div class="explanation" id="exp-3-1"></div>
+    </div>
+
+    <div class="quiz-score" id="score-3"></div>
+  </div>
+  <div class="nav-buttons">
+    <button class="btn btn-secondary" onclick="goTo(2)">← Previous</button>
+    <button class="btn btn-primary" onclick="goTo(4)">Next Topic →</button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- TOPIC 5: Linear Programming -->
+<!-- ══════════════════════════════════════════ -->
+<section class="topic-section" id="topic-4">
+  <div class="section-label">Topic 05</div>
+  <h2 class="section-title">Linear Programming (LP)</h2>
+  <p class="section-desc">When there are TWO or more limiting factors simultaneously, you can't just rank — you need linear programming.</p>
+
+  <div class="teach-block">
+    <h3><span class="num">1</span> Setting Up the LP Model</h3>
+    <p>Three components to define first:</p>
+    <ul>
+      <li><strong>Decision variables:</strong> What are we deciding? (e.g. A = units of Grade A, B = units of Grade B)</li>
+      <li><strong>Objective function:</strong> Maximise contribution = 612A + 456B</li>
+      <li><strong>Constraints:</strong> Resource limits for each factor (≤ available) plus non-negativity</li>
+    </ul>
+    <div class="formula">
+      <div class="label">May 2025 Q3 — LP Model (Twins Nig. Ltd)</div>
+Let A = units of Grade A, B = units of Grade B
+
+Objective: Maximise C = 612A + 456B
+
+Subject to:
+  Material X:     2A + B  ≤ 2,500
+  Skilled labour: 5A + 2B ≤ 4,800
+  Unskilled:      2A + 3B ≤ 3,900
+  Machine hours:  2A + 4B ≤ 5,000
+  Non-negativity: A, B ≥ 0
+    </div>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">2</span> Solving by Simultaneous Equations</h3>
+    <p>Identify the <strong>two binding constraints</strong> (where slack = 0 at the optimal), then solve:</p>
+    <div class="formula">
+      <div class="label">May 2025 Q3 — Solving (Skilled Labour + Unskilled Labour binding)</div>
+5A + 2B = 4,800  ... (1)
+2A + 3B = 3,900  ... (2)
+
+Multiply (1) × 3:  15A + 6B = 14,400
+Multiply (2) × 2:   4A + 6B =  7,800
+Subtract:          11A       =  6,600
+                    A = 600
+
+Sub into (1): 5(600) + 2B = 4,800
+             3,000 + 2B = 4,800
+             2B = 1,800  → B = 900
+
+Maximum Contribution = 612(600) + 456(900)
+                     = 367,200 + 410,400 = ₦777,600
+Less Fixed Costs:                          (600,000)
+Maximum Profit:                           ₦177,600
+    </div>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">3</span> Shadow Price (Maximum Overtime Premium)</h3>
+    <p>The shadow price is how much contribution would increase if you had ONE more unit of the scarce resource. It tells you the <strong>maximum premium to pay for overtime</strong>.</p>
+    <div class="key-box"><strong>May 2025 Q3(b) Logic:</strong> To find the max overtime premium for skilled labour, solve the LP with one extra skilled labour hour (4,801 hours) and find the increase in contribution. The shadow price minus the normal hourly cost = maximum overtime premium you should pay.</div>
+  </div>
+
+  <hr class="divider"/>
+  <div class="quiz-zone" id="quiz-4">
+    <div class="quiz-header"><span class="quiz-badge">Checkpoint Quiz</span><h4>Linear Programming</h4></div>
+
+    <div class="question-block" id="q-4-0">
+      <div class="q-text">A company makes Products P and Q. Constraint: 3P + 2Q ≤ 1,200 (machine hours). Contribution: ₦300P + ₦200Q. At the optimal point, both machine hours and labour (2P + 4Q ≤ 1,600) are binding. Solving gives P = 200, Q = 300. What is the maximum contribution?</div>
+      <div class="q-source">ICAN PM — Linear Programming / Simultaneous Equations</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-4-0','exp-4-0')"><span class="opt-letter">A</span>₦90,000</div>
+        <div class="option" onclick="answer(this,'correct','q-4-0','exp-4-0')"><span class="opt-letter">B</span>₦120,000</div>
+        <div class="option" onclick="answer(this,'wrong','q-4-0','exp-4-0')"><span class="opt-letter">C</span>₦180,000</div>
+        <div class="option" onclick="answer(this,'wrong','q-4-0','exp-4-0')"><span class="opt-letter">D</span>₦60,000</div>
+      </div>
+      <div class="explanation" id="exp-4-0"></div>
+    </div>
+
+    <div class="question-block" id="q-4-1">
+      <div class="q-text">In a linear programming model, the shadow price of a constraint represents:</div>
+      <div class="q-source">ICAN PM — Shadow Price / Overtime Premium</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-4-1','exp-4-1')"><span class="opt-letter">A</span>The cost of purchasing one more unit of the resource</div>
+        <div class="option" onclick="answer(this,'correct','q-4-1','exp-4-1')"><span class="opt-letter">B</span>The increase in the objective function value from one more unit of scarce resource</div>
+        <div class="option" onclick="answer(this,'wrong','q-4-1','exp-4-1')"><span class="opt-letter">C</span>The total contribution from the optimal solution</div>
+        <div class="option" onclick="answer(this,'wrong','q-4-1','exp-4-1')"><span class="opt-letter">D</span>The break-even number of units</div>
+      </div>
+      <div class="explanation" id="exp-4-1"></div>
+    </div>
+
+    <div class="quiz-score" id="score-4"></div>
+  </div>
+  <div class="nav-buttons">
+    <button class="btn btn-secondary" onclick="goTo(3)">← Previous</button>
+    <button class="btn btn-primary" onclick="goTo(5)">Next Topic →</button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- TOPIC 6: Budgeting & Flexible Budgets -->
+<!-- ══════════════════════════════════════════ -->
+<section class="topic-section" id="topic-5">
+  <div class="section-label">Topic 06</div>
+  <h2 class="section-title">Budgeting & Flexible Budget Variances</h2>
+  <p class="section-desc">Flexible budgets adjust for actual activity — so variances reflect efficiency, not just volume differences.</p>
+
+  <div class="teach-block">
+    <h3><span class="num">1</span> Fixed Budget vs Flexible Budget</h3>
+    <table class="styled-table">
+      <tr><th>Feature</th><th>Fixed Budget</th><th>Flexible Budget</th></tr>
+      <tr><td>Based on</td><td>One planned level of activity</td><td>Actual level of activity</td></tr>
+      <tr><td>Use</td><td>Planning</td><td>Control & performance appraisal</td></tr>
+      <tr><td>Variable costs</td><td>Set at budgeted quantity</td><td>Adjusted to actual quantity</td></tr>
+      <tr><td>Fixed costs</td><td>As budgeted</td><td>Same (not adjusted for volume)</td></tr>
+    </table>
+    <div class="key-box"><strong>The key rule:</strong> You should NEVER compare actual results at actual volume to a budget at budgeted volume. You must first <em>flex the budget</em> to actual volume, then compare.</div>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">2</span> Preparing a Flexible Budget (May 2025 Q6 Style)</h3>
+    <div class="formula">
+      <div class="label">Egoyibo — Flexible Budget at 100,000 units</div>
+Using high-low and known rates:
+  Direct materials:  ₦80/unit × 100,000        =  8,000,000  (variable)
+  Indirect materials: Fixed ₦320,000 + ₦8/unit =  1,120,000  (semi-var)
+  Direct labour:     ₦50/unit × 100,000        =  5,000,000  (variable)
+  Power:             Fixed ₦960,000 + ₦6/unit  =  1,560,000  (semi-var)
+  Repairs:           Fixed ₦800,000 + ₦10/unit =  1,800,000  (semi-var)
+  Supervision:       ₦1,600,000                =  1,600,000  (step: ≤100k)
+  Rent/insurance:    ₦720,000                  =    720,000  (fixed)
+  TOTAL BUDGET:                                 = 19,800,000
+    </div>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">3</span> Variance Analysis</h3>
+    <div class="formula">
+      <div class="label">Basic Variance Formula</div>
+Variance = Flexible Budget Cost – Actual Cost
+
+Favourable (F) = actual cost LOWER than flexible budget
+Adverse (A)    = actual cost HIGHER than flexible budget
+
+Material Price Variance   = (Standard price – Actual price) × Actual qty
+Material Usage Variance   = (Standard qty – Actual qty) × Standard price
+Labour Rate Variance      = (Standard rate – Actual rate) × Actual hours
+Labour Efficiency Variance = (Standard hours – Actual hours) × Standard rate
+    </div>
+  </div>
+
+  <hr class="divider"/>
+  <div class="quiz-zone" id="quiz-5">
+    <div class="quiz-header"><span class="quiz-badge">Checkpoint Quiz</span><h4>Flexible Budgets & Variances</h4></div>
+
+    <div class="question-block" id="q-5-0">
+      <div class="q-text">At 100,000 units actual production, the flexible budget shows direct materials of ₦8,000,000. Actual cost was ₦8,300,000. What is the materials cost variance, and is it favourable or adverse?</div>
+      <div class="q-source">ICAN PM — May 2025 Q6 (Budget Report)</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-5-0','exp-5-0')"><span class="opt-letter">A</span>₦300,000 Favourable</div>
+        <div class="option" onclick="answer(this,'correct','q-5-0','exp-5-0')"><span class="opt-letter">B</span>₦300,000 Adverse</div>
+        <div class="option" onclick="answer(this,'wrong','q-5-0','exp-5-0')"><span class="opt-letter">C</span>₦8,300,000 Adverse</div>
+        <div class="option" onclick="answer(this,'wrong','q-5-0','exp-5-0')"><span class="opt-letter">D</span>Zero — actual equals flexible budget</div>
+      </div>
+      <div class="explanation" id="exp-5-0"></div>
+    </div>
+
+    <div class="question-block" id="q-5-1">
+      <div class="q-text">Standard material: 2kg per unit at ₦50/kg. Actual: produced 1,000 units, used 2,200kg at ₦48/kg. What is the material USAGE variance?</div>
+      <div class="q-source">ICAN PM — Material Variance Analysis</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-5-1','exp-5-1')"><span class="opt-letter">A</span>₦4,400 Favourable (price saving)</div>
+        <div class="option" onclick="answer(this,'correct','q-5-1','exp-5-1')"><span class="opt-letter">B</span>₦10,000 Adverse (200kg over-usage × ₦50)</div>
+        <div class="option" onclick="answer(this,'wrong','q-5-1','exp-5-1')"><span class="opt-letter">C</span>₦9,600 Adverse (200kg × ₦48)</div>
+        <div class="option" onclick="answer(this,'wrong','q-5-1','exp-5-1')"><span class="opt-letter">D</span>₦5,600 Adverse</div>
+      </div>
+      <div class="explanation" id="exp-5-1"></div>
+    </div>
+
+    <div class="quiz-score" id="score-5"></div>
+  </div>
+  <div class="nav-buttons">
+    <button class="btn btn-secondary" onclick="goTo(4)">← Previous</button>
+    <button class="btn btn-primary" onclick="goTo(6)">Next Topic →</button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- TOPIC 7: Sales Mix & Quantity Variances -->
+<!-- ══════════════════════════════════════════ -->
+<section class="topic-section" id="topic-6">
+  <div class="section-label">Topic 07</div>
+  <h2 class="section-title">Sales Mix & Quantity Contribution Variances</h2>
+  <p class="section-desc">This was Section B Question 2 in May 2025. It is a premium topic — understand both variances and their real-world interpretation.</p>
+
+  <div class="teach-block">
+    <h3><span class="num">1</span> Why We Split the Sales Volume Variance</h3>
+    <p>The sales volume variance shows the total effect of selling more or fewer units than planned. It is split into:</p>
+    <ul>
+      <li><strong>Sales Mix Variance</strong> — effect of changing the relative proportions of products sold</li>
+      <li><strong>Sales Quantity Variance</strong> — effect of selling a different total quantity</li>
+    </ul>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">2</span> Calculating the Variances</h3>
+    <div class="formula">
+      <div class="label">Sales Mix Contribution Variance</div>
+= (Actual qty sold – Actual qty in budgeted proportions) × Standard contribution/unit
+
+Step 1: Find total actual units sold
+Step 2: Apportion total in BUDGETED MIX proportions (AQBP)
+Step 3: Compare actual units to AQBP for each product
+Step 4: Multiply difference by standard contribution per unit
+
+AQBP = Total Actual Units × (Budgeted units of product / Total budgeted units)
+    </div>
+    <div class="formula">
+      <div class="label">Sales Quantity Contribution Variance</div>
+= (Actual qty in budgeted proportions – Budgeted qty) × Standard contribution/unit
+
+i.e. AQBP – BQ, multiplied by standard contribution
+This shows the VOLUME effect only, at the BUDGETED MIX
+    </div>
+    <div class="exam-box">
+      <div class="exam-tag">🎯 May 2025 Q2 — Adebat Cleaning Worked Through</div>
+      <p style="margin-top:8px;"><strong>Budget:</strong> Complete 6,000 (60%), Mini 4,000 (40%). <strong>Actual:</strong> Complete 6,800, Mini 7,000. Total actual = 13,800 cars.</p>
+      <p>AQBP: Complete = 13,800 × 60% = 8,280 | Mini = 13,800 × 40% = 5,520</p>
+      <p><strong>Mix Variance:</strong> Complete: (6,800 – 8,280) × ₦450 = ₦666,000 A | Mini: (7,000 – 5,520) × ₦280 = ₦414,400 F | <strong>Net: ₦251,600 Adverse</strong></p>
+      <p><strong>Quantity Variance:</strong> Complete: (8,280 – 6,000) × ₦450 = ₦1,026,000 F | Mini: (5,520 – 4,000) × ₦280 = ₦425,600 F | <strong>Net: ₦1,451,600 Favourable</strong></p>
+    </div>
+  </div>
+
+  <hr class="divider"/>
+  <div class="quiz-zone" id="quiz-6">
+    <div class="quiz-header"><span class="quiz-badge">Checkpoint Quiz</span><h4>Sales Mix & Quantity Variances — May 2025 Q2</h4></div>
+
+    <div class="question-block" id="q-6-0">
+      <div class="q-text">Adebat sold 6,800 Complete wash (contribution ₦450) and 7,000 Mini wash (contribution ₦280). Budget was 6,000 Complete and 4,000 Mini. The actual qty in budgeted proportions (AQBP) for Complete wash (60% mix) is:</div>
+      <div class="q-source">ICAN PM — May 2025 Q2 (AQBP Calculation)</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-6-0','exp-6-0')"><span class="opt-letter">A</span>6,000</div>
+        <div class="option" onclick="answer(this,'wrong','q-6-0','exp-6-0')"><span class="opt-letter">B</span>6,800</div>
+        <div class="option" onclick="answer(this,'correct','q-6-0','exp-6-0')"><span class="opt-letter">C</span>8,280</div>
+        <div class="option" onclick="answer(this,'wrong','q-6-0','exp-6-0')"><span class="opt-letter">D</span>7,200</div>
+      </div>
+      <div class="explanation" id="exp-6-0"></div>
+    </div>
+
+    <div class="question-block" id="q-6-1">
+      <div class="q-text">The sales mix variance for Adebat was ₦251,600 Adverse. The best real-world explanation for this is:</div>
+      <div class="q-source">ICAN PM — May 2025 Q2(c) (Interpretation)</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-6-1','exp-6-1')"><span class="opt-letter">A</span>The company sold fewer cars than budgeted</div>
+        <div class="option" onclick="answer(this,'correct','q-6-1','exp-6-1')"><span class="opt-letter">B</span>Customers shifted from the higher-contribution Complete wash to the cheaper Mini wash due to reduced disposable incomes</div>
+        <div class="option" onclick="answer(this,'wrong','q-6-1','exp-6-1')"><span class="opt-letter">C</span>The fixed costs were higher than budgeted</div>
+        <div class="option" onclick="answer(this,'wrong','q-6-1','exp-6-1')"><span class="opt-letter">D</span>The selling prices were reduced below budget</div>
+      </div>
+      <div class="explanation" id="exp-6-1"></div>
+    </div>
+
+    <div class="quiz-score" id="score-6"></div>
+  </div>
+  <div class="nav-buttons">
+    <button class="btn btn-secondary" onclick="goTo(5)">← Previous</button>
+    <button class="btn btn-primary" onclick="goTo(7)">Next Topic →</button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- TOPIC 8: Activity-Based Costing -->
+<!-- ══════════════════════════════════════════ -->
+<section class="topic-section" id="topic-7">
+  <div class="section-label">Topic 08</div>
+  <h2 class="section-title">Activity-Based Costing (ABC)</h2>
+  <p class="section-desc">ABC gives a more accurate picture of product costs by linking overheads to the activities that actually drive them.</p>
+
+  <div class="teach-block">
+    <h3><span class="num">1</span> Traditional vs ABC</h3>
+    <table class="styled-table">
+      <tr><th>Feature</th><th>Traditional (Absorption)</th><th>ABC</th></tr>
+      <tr><td>Overhead allocation</td><td>Single rate (e.g. per DLH)</td><td>Multiple rates per activity cost pool</td></tr>
+      <tr><td>Cost driver</td><td>Volume-based (labour hours)</td><td>Activity-based (production runs, receipts, orders)</td></tr>
+      <tr><td>Accuracy</td><td>Distorts product costs in complex environments</td><td>More accurate in complex, multi-product settings</td></tr>
+      <tr><td>Admin cost</td><td>Low</td><td>High — needs activity analysis</td></tr>
+    </table>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">2</span> ABC — Step by Step</h3>
+    <div class="formula">
+      <div class="label">ABC Calculation (May 2025 Q4 — Chukwumah)</div>
+Step 1: Identify activity cost pools and their cost drivers
+  Set-up costs:      ₦1,260,000 → driver: production runs
+  Machine costs:     ₦8,100,000 → driver: machine hours
+  Goods inwards:     ₦2,520,000 → driver: component receipts
+  Packaging:         ₦1,800,000 → driver: production orders
+  Engineering:       ₦1,620,000 → driver: production orders
+
+Step 2: Calculate cost per unit of each driver
+  Cost per production run = ₦1,260,000 / (15+30+75) = ₦10,500
+  Cost per machine hour   = ₦8,100,000 / total m/c hours
+  Cost per receipt        = ₦2,520,000 / total receipts
+  Cost per order (pack+eng) = (₦1,800,000+₦1,620,000) / total orders
+
+Step 3: Assign to each product based on its usage of cost drivers
+
+Step 4: Add direct costs + variable overhead to get unit cost
+    </div>
+    <div class="warn-box"><strong>⚠ Common Error:</strong> In traditional absorption, candidates often forget to calculate a single OAR = Total Fixed OH / Total Direct Labour Hours across all products. In ABC, each cost pool has its own rate — never mix them.</div>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">3</span> Why ABC is Preferred in Modern Manufacturing</h3>
+    <ul>
+      <li>Products with <strong>low volume but high complexity</strong> (many setups, many receipts) are correctly shown as more expensive under ABC</li>
+      <li>Avoids <strong>cross-subsidisation</strong> where high-volume simple products subsidise complex low-volume ones</li>
+      <li>Better basis for <strong>pricing decisions</strong> and product mix decisions</li>
+      <li>Overheads have grown as a % of total costs in modern factories — accurate allocation matters more</li>
+    </ul>
+  </div>
+
+  <hr class="divider"/>
+  <div class="quiz-zone" id="quiz-7">
+    <div class="quiz-header"><span class="quiz-badge">Checkpoint Quiz</span><h4>Activity-Based Costing</h4></div>
+
+    <div class="question-block" id="q-7-0">
+      <div class="q-text">Set-up costs are ₦1,260,000. Product X uses 15 production runs, Product Y uses 30, Product Z uses 75. Total = 120 runs. What is the cost per production run and the set-up cost assigned to Product Z?</div>
+      <div class="q-source">ICAN PM — May 2025 Q4 (ABC Cost Pool Rate)</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-7-0','exp-7-0')"><span class="opt-letter">A</span>₦8,400/run; ₦630,000 to Z</div>
+        <div class="option" onclick="answer(this,'correct','q-7-0','exp-7-0')"><span class="opt-letter">B</span>₦10,500/run; ₦787,500 to Z</div>
+        <div class="option" onclick="answer(this,'wrong','q-7-0','exp-7-0')"><span class="opt-letter">C</span>₦10,500/run; ₦157,500 to Z</div>
+        <div class="option" onclick="answer(this,'wrong','q-7-0','exp-7-0')"><span class="opt-letter">D</span>₦16,800/run; ₦1,260,000 to Z</div>
+      </div>
+      <div class="explanation" id="exp-7-0"></div>
+    </div>
+
+    <div class="question-block" id="q-7-1">
+      <div class="q-text">Which of the following best explains why ABC may give DIFFERENT unit costs to traditional absorption for low-volume complex products?</div>
+      <div class="q-source">ICAN PM — May 2025 Q4(c) (ABC vs Traditional)</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-7-1','exp-7-1')"><span class="opt-letter">A</span>ABC uses fewer cost pools, so overheads are spread more evenly</div>
+        <div class="option" onclick="answer(this,'wrong','q-7-1','exp-7-1')"><span class="opt-letter">B</span>Traditional costing uses more drivers than ABC</div>
+        <div class="option" onclick="answer(this,'correct','q-7-1','exp-7-1')"><span class="opt-letter">C</span>ABC traces overheads to the activities that cause them; complex low-volume products use more overhead-generating activities per unit</div>
+        <div class="option" onclick="answer(this,'wrong','q-7-1','exp-7-1')"><span class="opt-letter">D</span>ABC does not include fixed costs in unit cost calculations</div>
+      </div>
+      <div class="explanation" id="exp-7-1"></div>
+    </div>
+
+    <div class="quiz-score" id="score-7"></div>
+  </div>
+  <div class="nav-buttons">
+    <button class="btn btn-secondary" onclick="goTo(6)">← Previous</button>
+    <button class="btn btn-primary" onclick="goTo(8)">Next Topic →</button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- TOPIC 9: ROI & Residual Income -->
+<!-- ══════════════════════════════════════════ -->
+<section class="topic-section" id="topic-8">
+  <div class="section-label">Topic 09</div>
+  <h2 class="section-title">Divisional Performance: ROI & Residual Income</h2>
+  <p class="section-desc">How do you measure whether a division is creating value? ROI and RI are the two main tools — and they can give conflicting signals.</p>
+
+  <div class="teach-block">
+    <h3><span class="num">1</span> Return on Investment (ROI)</h3>
+    <div class="formula">
+      <div class="label">ROI Formula</div>
+ROI = (Divisional Profit / Capital Employed) × 100%
+
+Capital Employed = Total assets of the division (or Net assets)
+
+Example (May 2025 Q5 — East Division):
+  Total contribution – fixed costs = divisional profit
+  ROI = Profit / Average Capital Employed × 100%
+    </div>
+    <div class="warn-box"><strong>⚠ ROI Problem:</strong> A division with a high existing ROI may REJECT a new project with a good ROI (e.g., 20%) if it would pull down their average ROI (currently 30%). This is goal incongruence — the division acts against the company's interest.</div>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">2</span> Residual Income (RI)</h3>
+    <div class="formula">
+      <div class="label">Residual Income Formula</div>
+RI = Divisional Profit – (Cost of Capital × Capital Employed)
+
+Cost of Capital Charge = Capital Employed × Cost of Capital %
+
+Example (May 2025 Q5):
+  Capital Employed = ₦1,000,000
+  Cost of capital = 12%
+  Capital charge = ₦120,000
+  RI = Divisional Profit – ₦120,000
+
+Positive RI → Division is creating value above cost of capital → ACCEPT
+Negative RI → Division is destroying value → REVIEW
+    </div>
+    <div class="key-box"><strong>RI vs ROI:</strong> RI solves the goal congruence problem. A division will accept any project with positive RI (profit > capital charge), which aligns with the group's desire to accept all positive NPV projects. ROI encourages rejecting profitable projects if they dilute current ROI.</div>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">3</span> Advantages of ROI over RI (Asked in May 2025 Q5c)</h3>
+    <ul>
+      <li>ROI is a <strong>percentage</strong> — allows comparison across divisions of different sizes</li>
+      <li>RI is an <strong>absolute number</strong> — larger divisions will always have higher RI</li>
+      <li>ROI is widely understood by non-financial managers</li>
+      <li>ROI can be compared to external benchmarks (industry ROI, WACC)</li>
+      <li>ROI links to shareholder returns (EPS, share price growth)</li>
+    </ul>
+  </div>
+
+  <hr class="divider"/>
+  <div class="quiz-zone" id="quiz-8">
+    <div class="quiz-header"><span class="quiz-badge">Checkpoint Quiz</span><h4>ROI & Residual Income</h4></div>
+
+    <div class="question-block" id="q-8-0">
+      <div class="q-text">East Division earns a profit of ₦240,000 on capital employed of ₦1,000,000. The cost of capital is 12%. What is the Residual Income?</div>
+      <div class="q-source">ICAN PM — May 2025 Q5 Style (RI Calculation)</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-8-0','exp-8-0')"><span class="opt-letter">A</span>₦240,000</div>
+        <div class="option" onclick="answer(this,'correct','q-8-0','exp-8-0')"><span class="opt-letter">B</span>₦120,000</div>
+        <div class="option" onclick="answer(this,'wrong','q-8-0','exp-8-0')"><span class="opt-letter">C</span>₦28,800</div>
+        <div class="option" onclick="answer(this,'wrong','q-8-0','exp-8-0')"><span class="opt-letter">D</span>₦1,120,000</div>
+      </div>
+      <div class="explanation" id="exp-8-0"></div>
+    </div>
+
+    <div class="question-block" id="q-8-1">
+      <div class="q-text">Division A has ROI of 25% and cost of capital of 12%. It is evaluating a new project with expected ROI of 18%. A manager assessed on ROI would:</div>
+      <div class="q-source">ICAN PM — Goal Congruence (ROI vs RI)</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'correct','q-8-1','exp-8-1')"><span class="opt-letter">A</span>Reject the project — it will reduce the division's average ROI from 25%</div>
+        <div class="option" onclick="answer(this,'wrong','q-8-1','exp-8-1')"><span class="opt-letter">B</span>Accept the project — its ROI of 18% exceeds the cost of capital of 12%</div>
+        <div class="option" onclick="answer(this,'wrong','q-8-1','exp-8-1')"><span class="opt-letter">C</span>Be indifferent — ROI doesn't affect the decision</div>
+        <div class="option" onclick="answer(this,'wrong','q-8-1','exp-8-1')"><span class="opt-letter">D</span>Accept — the project has positive residual income</div>
+      </div>
+      <div class="explanation" id="exp-8-1"></div>
+    </div>
+
+    <div class="quiz-score" id="score-8"></div>
+  </div>
+  <div class="nav-buttons">
+    <button class="btn btn-secondary" onclick="goTo(7)">← Previous</button>
+    <button class="btn btn-primary" onclick="goTo(9)">Next Topic →</button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- TOPIC 10: Throughput Accounting -->
+<!-- ══════════════════════════════════════════ -->
+<section class="topic-section" id="topic-9">
+  <div class="section-label">Topic 10</div>
+  <h2 class="section-title">Throughput Accounting</h2>
+  <p class="section-desc">A modern, JIT-aligned approach to managing bottlenecks and maximising value through the factory — tested in May 2025 Q7.</p>
+
+  <div class="teach-block">
+    <h3><span class="num">1</span> The Throughput Philosophy</h3>
+    <p>Throughput Accounting (TA) is based on the Theory of Constraints (TOC). The core idea:</p>
+    <ul>
+      <li>Every system has a <strong>bottleneck</strong> — a constraint that limits output</li>
+      <li>Maximise <strong>throughput</strong> through the bottleneck</li>
+      <li>All costs except materials are treated as <strong>fixed</strong> in the short term (Total Factory Costs)</li>
+    </ul>
+    <div class="key-box"><strong>Key definitions:</strong><br/>
+    <strong>Throughput</strong> = Sales revenue – Direct material cost (NOT contribution — no labour or variable overhead deducted)<br/>
+    <strong>Total Factory Cost</strong> = All other costs (labour + overheads) — treated as fixed<br/>
+    <strong>Bottleneck</strong> = The resource with the highest utilisation rate (&gt;100% of capacity)</div>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">2</span> Throughput Accounting Ratio (TA Ratio)</h3>
+    <div class="formula">
+      <div class="label">TA Ratio Formulae (May 2025 Q7 — Yaro Ltd)</div>
+Throughput per unit = Selling price – Material cost per unit
+
+Return per bottleneck hour = Throughput per unit / Bottleneck hours per unit
+
+Total Factory Cost Rate = Total Factory Costs / Total Bottleneck Hours Available
+
+TA Ratio = Return per bottleneck hour / Total Factory Cost per bottleneck hour
+
+TA Ratio > 1  → Product is making profit → PRODUCE
+TA Ratio < 1  → Product is making a loss at the bottleneck → REVIEW
+
+May 2025 Q7 Example (Machine M is bottleneck):
+  Red panels:   Throughput = ₦12,600 – ₦4,300 = ₦8,300
+                Return per M-hr = ₦8,300 / 1.4 hrs = ₦5,928.57
+  Black panels: Throughput = ₦3,800 – ₦1,160 = ₦2,640
+                Return per M-hr = ₦2,640 / 0.6 hrs = ₦4,400.00
+    </div>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">3</span> Optimal Production Mix Under Throughput</h3>
+    <p>Rank products by TA Ratio (or return per bottleneck hour). Produce in that order subject to minimum demand commitments.</p>
+    <div class="exam-box">
+      <div class="exam-tag">🎯 May 2025 Q7 — Yaro Ltd Optimal Mix</div>
+      <p style="margin-top:8px;">Red panels have a higher return per Machine M hour (₦5,928.57 vs ₦4,400). Machine M available hours = 13 hrs × (90%) × 5 days × 50 weeks = 2,925 hours.</p>
+      <p>Minimum 1,000 Black panels required = 1,000 × 0.6 = 600 hours used. Remaining = 2,925 – 600 = 2,325 hours for Red panels → 2,325/1.4 = 1,660 Red panels (max demand 1,800, so limited to 1,660).</p>
+    </div>
+  </div>
+
+  <div class="teach-block">
+    <h3><span class="num">4</span> Ways to Increase Throughput Without Investment</h3>
+    <p>Asked in May 2025 Q7(c):</p>
+    <ul>
+      <li><strong>Cross-train workers</strong> so they can operate multiple machines — reduce idle bottleneck time from absenteeism</li>
+      <li><strong>Reduce maintenance downtime</strong> on bottleneck — schedule maintenance for non-production times (night, weekends)</li>
+      <li><strong>Reduce lunch breaks / shift patterns</strong> on the bottleneck machine specifically</li>
+      <li><strong>Eliminate quality defects</strong> going through the bottleneck (rework wastes bottleneck capacity)</li>
+      <li><strong>Offload non-bottleneck work</strong> to other machines to keep bottleneck flowing</li>
+    </ul>
+  </div>
+
+  <hr class="divider"/>
+  <div class="quiz-zone" id="quiz-9">
+    <div class="quiz-header"><span class="quiz-badge">Final Checkpoint Quiz</span><h4>Throughput Accounting — May 2025 Q7</h4></div>
+
+    <div class="question-block" id="q-9-0">
+      <div class="q-text">Red panels: selling price ₦12,600, material cost ₦4,300, Machine M hours = 1.4 per unit. Black panels: selling price ₦3,800, material cost ₦1,160, Machine M hours = 0.6 per unit. Which product has the higher return per bottleneck hour?</div>
+      <div class="q-source">ICAN PM — May 2025 Q7 (TA Ratio Comparison)</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'correct','q-9-0','exp-9-0')"><span class="opt-letter">A</span>Red panels — ₦8,300/1.4 = ₦5,928.57 per hour vs Black ₦4,400/hr</div>
+        <div class="option" onclick="answer(this,'wrong','q-9-0','exp-9-0')"><span class="opt-letter">B</span>Black panels — ₦2,640/0.6 = ₦4,400 per hour</div>
+        <div class="option" onclick="answer(this,'wrong','q-9-0','exp-9-0')"><span class="opt-letter">C</span>Both have equal returns per bottleneck hour</div>
+        <div class="option" onclick="answer(this,'wrong','q-9-0','exp-9-0')"><span class="opt-letter">D</span>Red panels — because they have a higher selling price</div>
+      </div>
+      <div class="explanation" id="exp-9-0"></div>
+    </div>
+
+    <div class="question-block" id="q-9-1">
+      <div class="q-text">In throughput accounting, total factory costs (labour + overheads) are treated as:</div>
+      <div class="q-source">ICAN PM — Throughput Accounting Theory</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-9-1','exp-9-1')"><span class="opt-letter">A</span>Variable costs per unit produced</div>
+        <div class="option" onclick="answer(this,'wrong','q-9-1','exp-9-1')"><span class="opt-letter">B</span>Part of throughput calculation</div>
+        <div class="option" onclick="answer(this,'correct','q-9-1','exp-9-1')"><span class="opt-letter">C</span>Fixed period costs — not variable with output in the short term</div>
+        <div class="option" onclick="answer(this,'wrong','q-9-1','exp-9-1')"><span class="opt-letter">D</span>Allocated to products using ABC cost drivers</div>
+      </div>
+      <div class="explanation" id="exp-9-1"></div>
+    </div>
+
+    <div class="question-block" id="q-9-2">
+      <div class="q-text">Yaro Ltd can increase throughput without buying new machines by cross-training workers to operate multiple machines. Why does this specifically help?</div>
+      <div class="q-source">ICAN PM — May 2025 Q7(c) (Increasing Capacity)</div>
+      <div class="options">
+        <div class="option" onclick="answer(this,'wrong','q-9-2','exp-9-2')"><span class="opt-letter">A</span>It reduces material costs per unit</div>
+        <div class="option" onclick="answer(this,'correct','q-9-2','exp-9-2')"><span class="opt-letter">B</span>It prevents the bottleneck machine from sitting idle when its dedicated operator is absent</div>
+        <div class="option" onclick="answer(this,'wrong','q-9-2','exp-9-2')"><span class="opt-letter">C</span>It allows more shifts to be added</div>
+        <div class="option" onclick="answer(this,'wrong','q-9-2','exp-9-2')"><span class="opt-letter">D</span>It reduces the TA ratio for all products</div>
+      </div>
+      <div class="explanation" id="exp-9-2"></div>
+    </div>
+
+    <div class="quiz-score" id="score-9"></div>
+  </div>
+
+  <div class="nav-buttons">
+    <button class="btn btn-secondary" onclick="goTo(8)">← Previous</button>
+    <button class="btn btn-primary" onclick="showComplete()">Finish →</button>
+  </div>
+</section>
+
+<!-- COMPLETE BANNER -->
+<div class="complete-banner" id="completeBanner">
+  <div class="trophy">🏆</div>
+  <h2>Performance Management Complete!</h2>
+  <p>You've covered all 10 PM topics with real May & November 2025 past question integration.<br/>You now understand the full range of ICAN PM exam techniques.</p>
+  <button class="btn btn-primary" onclick="goTo(0)">Start Over</button>
+  <a href="index.html" class="home-btn-bottom" style="color:inherit; margin-left:12px;">← Back to Study Hub</a>
+</div>
+
+</div><!-- /container -->
+
+<script>
+const explanations = {
+  'exp-0-0': { correct:'B', text:'<strong>B is correct.</strong> Variable rate = (1,920,000–1,440,000)/(160,000–80,000) = ₦6/unit. Fixed = 1,440,000 – (6×80,000) = 1,440,000 – 480,000 = <strong>₦960,000</strong>.' },
+  'exp-0-1': { correct:'C', text:'<strong>C is correct.</strong> A step fixed cost remains constant within a range of activity but jumps to a higher level at a certain point. This is exactly what supervision does here — fixed at ₦1.6m up to 100k units, then jumps to ₦2.88m above that.' },
+  'exp-1-0': { correct:'C', text:'<strong>C is correct.</strong> The original cost (₦40/sqm) is a sunk cost — irrelevant. Replacement cost (₦50/sqm) is not relevant because the material won\'t be replaced (no future use). The relevant cost is what the company gives up by using the material: its scrap value of <strong>₦20 × 5,000 = ₦100,000</strong>.' },
+  'exp-1-1': { correct:'C', text:'<strong>C is correct.</strong> The supervisor\'s salary of ₦500,000 is committed regardless — not incremental. Overtime is unpaid — zero cost. The only incremental cash cost is the <strong>₦5,000 bonus</strong>, which is only paid if the project proceeds.' },
+  'exp-1-2': { correct:'A', text:'<strong>A is correct.</strong> The ₦250,000 analysis cost was spent in the past. It cannot be recovered whether the project goes ahead or not. It is therefore a <strong>sunk cost</strong> and is completely irrelevant to the decision. Never include past costs in a relevant cost analysis.' },
+  'exp-2-0': { correct:'B', text:'<strong>B is correct.</strong> Contribution per unit = ₦800 – ₦500 = ₦300. Break-even = Fixed costs / Contribution per unit = ₦3,600,000 / ₦300 = <strong>12,000 units</strong>.' },
+  'exp-2-1': { correct:'B', text:'<strong>B is correct.</strong> Weighted avg C/S: Revenue mix = Complete (₦1,000 × 6,000 = ₦6m, 75% of ₦8m) and Mini (₦500 × 4,000 = ₦2m, 25% of ₦8m). Weighted avg = (45% × 75%) + (56% × 25%) = 33.75% + 14% = <strong>47.75%</strong>... More precisely with budgeted contribution: Complete ₦450×6,000=₦2.7m, Mini ₦280×4,000=₦1.12m. Total contrib=₦3.82m on ₦8m revenue = 47.75%. Note: The exam uses this type of weighted average approach.' },
+  'exp-3-0': { correct:'B', text:'<strong>B is correct.</strong> When machine hours are scarce, rank by contribution per machine hour: Product Y = ₦400/1 hour = ₦400 per machine hour. Product X = ₦600/3 hours = ₦200 per machine hour. <strong>Product Y ranks first</strong> — it generates double the return per scarce resource.' },
+  'exp-3-1': { correct:'B', text:'<strong>B is correct.</strong> Grade B uses 2 skilled labour hours per unit. With 4,800 hours available: 4,800 ÷ 2 = <strong>2,400 units of Grade B</strong>. Grade B also has a higher contribution per skilled labour hour (₦228 vs ₦122.40), confirming it is the better choice when skilled labour is the constraint.' },
+  'exp-4-0': { correct:'B', text:'<strong>B is correct.</strong> Maximum contribution = (₦300 × 200) + (₦200 × 300) = ₦60,000 + ₦60,000 = <strong>₦120,000</strong>.' },
+  'exp-4-1': { correct:'B', text:'<strong>B is correct.</strong> The shadow price tells you how much additional contribution (profit) you would gain from having ONE more unit of the scarce resource. This is the maximum premium above the normal cost you should pay for overtime or additional resource.' },
+  'exp-5-0': { correct:'B', text:'<strong>B is correct.</strong> Variance = Flexible budget – Actual = ₦8,000,000 – ₦8,300,000 = <strong>₦300,000 Adverse</strong>. Actual cost exceeded the flexible budget → adverse. If actual were lower, it would be favourable.' },
+  'exp-5-1': { correct:'B', text:'<strong>B is correct.</strong> Material usage variance = (Standard qty – Actual qty) × Standard price = (1,000×2 – 2,200) × ₦50 = (2,000 – 2,200) × ₦50 = –200 × ₦50 = <strong>₦10,000 Adverse</strong>. Always use the <em>standard</em> price (not actual price) for the usage variance.' },
+  'exp-6-0': { correct:'C', text:'<strong>C is correct.</strong> AQBP = Total actual units × budgeted mix proportion for Complete. Total actual = 6,800 + 7,000 = 13,800. Complete was budgeted at 60% (6,000/10,000). AQBP = 13,800 × 60% = <strong>8,280</strong>.' },
+  'exp-6-1': { correct:'B', text:'<strong>B is correct.</strong> The adverse mix variance of ₦251,600 means customers shifted from Complete wash (higher contribution ₦450) to Mini wash (lower contribution ₦280). This is directly explained by the reduced disposable incomes in Nigeria — people opted for the cheaper Mini wash option. The total volume was actually higher (favourable quantity variance), but the mix shifted to the less profitable product.' },
+  'exp-7-0': { correct:'B', text:'<strong>B is correct.</strong> Cost per production run = ₦1,260,000 / (15+30+75) = ₦1,260,000 / 120 = <strong>₦10,500 per run</strong>. Cost to Product Z = ₦10,500 × 75 = <strong>₦787,500</strong>. Product Z has the most runs (75), so it absorbs the highest set-up cost under ABC.' },
+  'exp-7-1': { correct:'C', text:'<strong>C is correct.</strong> Under ABC, overheads are allocated based on actual cost-driver usage. A complex low-volume product (like Product Z with 75 production runs vs Product X with only 15) will be assigned much more set-up overhead per unit. Traditional costing using DLH would spread set-up costs based on labour hours — potentially under-costing the complex product and over-costing the simple one.' },
+  'exp-8-0': { correct:'B', text:'<strong>B is correct.</strong> Capital charge = 12% × ₦1,000,000 = ₦120,000. RI = Divisional profit – Capital charge = ₦240,000 – ₦120,000 = <strong>₦120,000</strong>. Positive RI means the division is earning more than the minimum required return — value is being created.' },
+  'exp-8-1': { correct:'A', text:'<strong>A is correct.</strong> A manager assessed on ROI will REJECT the project because it earns 18%, which is below their current divisional ROI of 25%. Adding it would pull the average down. However, from the company\'s perspective, this project should be accepted because 18% > 12% cost of capital (positive RI). This is the classic <strong>goal incongruence problem</strong> with ROI — RI would align the manager\'s decision with the company\'s.' },
+  'exp-9-0': { correct:'A', text:'<strong>A is correct.</strong> Red: Throughput = 12,600–4,300 = ₦8,300 → per M-hr = ₦8,300/1.4 = <strong>₦5,928.57</strong>. Black: Throughput = 3,800–1,160 = ₦2,640 → per M-hr = ₦2,640/0.6 = ₦4,400. Red panels have a higher return per bottleneck hour → rank first.' },
+  'exp-9-1': { correct:'C', text:'<strong>C is correct.</strong> In throughput accounting, only direct material cost is treated as truly variable. All other costs — labour, overheads — are treated as <strong>fixed period costs</strong> (Total Factory Costs). This reflects the reality that in the short term, you cannot quickly adjust your workforce or overhead spend.' },
+  'exp-9-2': { correct:'B', text:'<strong>B is correct.</strong> Yaro\'s problem is that Machine M runs idle when its dedicated operator is absent (absenteeism). Cross-training workers means another worker can step in and keep the bottleneck running. Since Machine M is the constraint, every idle hour on Machine M is lost throughput that can never be recovered.' },
+};
+
+const quizResults = {};
+
+function answer(optEl, result, qId, expId) {
+  const block = document.getElementById(qId);
+  if (block.classList.contains('answered')) return;
+  const opts = block.querySelectorAll('.option');
+  const expEl = document.getElementById(expId);
+  const data = explanations[expId];
+  opts.forEach(o => o.classList.add('locked'));
+  block.classList.add('answered');
+  if (result === 'correct') {
+    optEl.classList.add('correct');
+    expEl.className = 'explanation show';
+    expEl.innerHTML = '✅ ' + data.text;
+  } else {
+    optEl.classList.add('wrong');
+    opts.forEach(o => { if (o.querySelector('.opt-letter').textContent === data.correct) o.classList.add('reveal-correct'); });
+    expEl.className = 'explanation wrong-exp show';
+    expEl.innerHTML = '❌ Not quite. ' + data.text;
+  }
+  quizResults[qId] = result;
+  updateScore(qId);
+}
+
+function updateScore(qId) {
+  const parts = qId.split('-');
+  const quizNum = parts[1];
+  const scoreEl = document.getElementById('score-' + quizNum);
+  const allQ = document.querySelectorAll('[id^="q-' + quizNum + '-"]');
+  let answered = 0, correct = 0;
+  allQ.forEach(q => { if (q.classList.contains('answered')) { answered++; if (quizResults[q.id] === 'correct') correct++; } });
+  if (answered === allQ.length) {
+    const pct = Math.round((correct/allQ.length)*100);
+    scoreEl.className = 'quiz-score show ' + (pct>=80?'great':pct>=50?'ok':'low');
+    scoreEl.textContent = (pct>=80?'🎉 Excellent! ':pct>=50?'👍 Good effort. ':'📚 Review this topic. ') + correct + '/' + allQ.length + ' correct (' + pct + '%)';
+  }
+}
+
+let currentTopic = 0;
+const TOTAL = 10;
+
+function goTo(idx) {
+  if (idx < 0 || idx >= TOTAL) return;
+  document.getElementById('topic-' + currentTopic).classList.remove('active');
+  document.getElementById('completeBanner').classList.remove('show');
+  currentTopic = idx;
+  const section = document.getElementById('topic-' + idx);
+  section.classList.add('active');
+  const navItems = document.querySelectorAll('.nav-item');
+  navItems.forEach((n,i) => n.classList.toggle('active', i===idx));
+  const pct = Math.round(((idx+1)/TOTAL)*100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = 'Topic ' + (idx+1) + ' of ' + TOTAL;
+  document.getElementById('progressPct').textContent = pct + '%';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showComplete() {
+  document.getElementById('topic-' + currentTopic).classList.remove('active');
+  document.getElementById('completeBanner').classList.add('show');
+  document.getElementById('progressFill').style.width = '100%';
+  document.getElementById('progressPct').textContent = '100%';
+  document.getElementById('progressLabel').textContent = 'Complete!';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.getElementById('progressFill').style.width = '10%';
+</script>
+</body>
+</html>
